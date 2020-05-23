@@ -1,7 +1,5 @@
 #tableContainer {
   display: table;
-  width: 800px;
-  height: 600px;
   border: solid 1px black;
   margin: auto;
 }
@@ -22,6 +20,8 @@
 
 #gameBox {
   display: table-cell;
+  width: 600px;
+  height: 600px;
 }
 
 #game {
@@ -34,8 +34,6 @@
 }
 
 #sizeSelectCanvas {
-  width: 200px;
-  height: 200px;
   border: solid 2px black;
 }
 
@@ -60,6 +58,7 @@
   position: absolute;
   bottom: 0px;
   margin-bottom: 0px;
+  height: 40px;
 }
 
 #title {
