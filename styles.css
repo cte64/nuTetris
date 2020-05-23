@@ -1,0 +1,69 @@
+#tableContainer {
+  display: table;
+  width: 800px;
+  height: 600px;
+  border: solid 1px black;
+  margin: auto;
+}
+
+#tableRow {
+  display: table-row;
+}
+
+#menu {
+  display: table-cell;
+  padding: 0px;
+  margin: 0px;
+  border: solid 2px black;
+  width: 200px;
+  position: relative;
+  background-color: rgb(191, 191, 191);
+}
+
+#gameBox {
+  display: table-cell;
+}
+
+#game {
+  background-color: grey;
+  width: 90%;
+  height: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#sizeSelectCanvas {
+  width: 200px;
+  height: 200px;
+  border: solid 2px black;
+}
+
+#menuItems {
+  margin: 0px;
+  padding: 0px;
+}
+
+.menuItem, .lastItem  {
+  border: solid 1px black;
+  background-color: rgb(169, 214, 196);
+  font-size: 30px;
+  list-style: none;
+  text-align: center;
+  border-radius: 6px;
+  padding: 15px;
+  width: 200px;
+  height: 70px;
+}
+
+.lastItem {
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 0px;
+}
+
+#title {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
