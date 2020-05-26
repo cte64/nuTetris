@@ -125,27 +125,27 @@ var tetris = {
 
   rotateMatrix: function() {
 
-  for(var y = 0; y< this.BLOCKSIZE/2; y++) {
-    var siz = this.BLOCKSIZE - 2*y;
-    var perimeter = 4*siz - 4;
+    for(var y = 0; y< this.BLOCKSIZE/2; y++) {
+      var siz = this.BLOCKSIZE - 2*y;
+      var perimeter = 4*siz - 4;
 
-    for(var z = 0; z<siz - 1; z++) {
-      var hold = this.block.matrix[y + 1][y];
-      for(var x = 0; x < perimeter; x++) {
-        var xIndex = 0;
-        var yIndex = 0;
+      for(var z = 0; z<siz - 1; z++) {
+        var hold = this.block.matrix[y + 1][y];
+        for(var x = 0; x < perimeter; x++) {
+          var xIndex = 0;
+          var yIndex = 0;
 
-        if(0 <= x  && x <= siz - 1) {xIndex = x + y; yIndex = y; }
-        if(siz - 1 < x  && x < 2*siz - 2) {xIndex = this.BLOCKSIZE - 1 - y; yIndex = x - siz + 1 + y; }
-        if(2*siz - 2 <= x && x <= 3*siz - 3){xIndex = 3*siz - 3 - x + y; yIndex = this.BLOCKSIZE - 1 - y; }
-        if(3*siz - 3 < x && x < 4*siz - 4){xIndex = y; yIndex = 4*siz - 4 - x + y; }
+          if(0 <= x  && x <= siz - 1) {xIndex = x + y; yIndex = y; }
+          if(siz - 1 < x  && x < 2*siz - 2) {xIndex = this.BLOCKSIZE - 1 - y; yIndex = x - siz + 1 + y; }
+          if(2*siz - 2 <= x && x <= 3*siz - 3){xIndex = 3*siz - 3 - x + y; yIndex = this.BLOCKSIZE - 1 - y; }
+          if(3*siz - 3 < x && x < 4*siz - 4){xIndex = y; yIndex = 4*siz - 4 - x + y; }
 
-        var temp = this.block.matrix[yIndex][xIndex];
-        this.block.matrix[yIndex][xIndex] = hold;
-        hold = temp;
+          var temp = this.block.matrix[yIndex][xIndex];
+          this.block.matrix[yIndex][xIndex] = hold;
+          hold = temp;
+        }
       }
     }
-  }
 },
 
   moveBlock: function(moveTo) {

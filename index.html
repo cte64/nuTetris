@@ -2,13 +2,17 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/selectSize.css">
+    <link rel="stylesheet" href="styles/createPieces.css">
+    <link rel="stylesheet" href="styles/tetris.css">
+    <link rel="stylesheet" href="styles/mainUI.css">
     <title></title>
   </head>
 
   <body>
-    <div id="tableContainer">
-      <div id="tableRow">
+    <div class="tableContainer">
+      <div class="tableRow">
+
 
         <div id="menu">
           <ul id="menuItems">
@@ -21,6 +25,39 @@
         </div>
 
         <div id="gameBox">
+
+          <h1 id='title'> SandBox Tetris </h1>
+          <div id="game">
+
+            <div id="scrollBar">
+                <div class="sideBar"> <img id="leftArrow" src="images/arrow.png" onclick="createPieces.update('left')"> </div>
+                <div id="middle"> <canvas id="slideShow"> </canvas> </div>
+                <div class="sideBar"> <img id="rightArrow" src="images/arrow.png" onclick="createPieces.update('right')"> </div>
+            </div>
+
+
+
+            <div class="tableContainer" id="gridControls">
+              <div class="tableRow">
+                <div id="leftSide">
+                  <canvas id="gridSelector"> </canvas>
+                </div>
+
+                <div id="rightSide">
+
+                  <ul id="gridList">
+                    <li> <a href="" class="gridControlButton"> hey </a> </li>
+                    <li> <a href="" class="gridControlButton"> hey </a> </li>
+                  <ul>
+
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
 
         </div>
 

@@ -3,7 +3,7 @@ var mainMenu = {
 
   state: "init",
   init: function() {
-    this.update("sizeSelect");
+    this.update("createPieces");
   },
 
   update: function(button) {

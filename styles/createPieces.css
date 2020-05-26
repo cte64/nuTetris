@@ -1,0 +1,84 @@
+
+#scrollBar {
+  display: table;
+  border: solid 1px black;
+  width: 500px;
+  height: 200px;
+  position: relative;
+  top: 10px;
+  margin: auto;
+}
+
+.sideBar {
+  display: table-cell;
+  width: 6%;
+  background-color: rgb(196, 196, 196);
+  vertical-align: middle;
+}
+
+#leftArrow {
+  width: 100%;
+}
+
+#rightArrow {
+  width: 100%;
+  transform: scaleX(-1);
+}
+
+#middle {
+  display: table-cell;
+  width: 80%;
+  background-color: rgb(235, 235, 235);
+}
+
+#gridControls {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  display: table;
+  border: solid 1px black;
+}
+
+#leftSide {
+  display: table-cell;
+  width: 50%;
+  position: relative;
+}
+
+#rightSide {
+  display: table-cell;
+  width: 50%;
+  position: relative;
+}
+
+.gridControlButton {
+  border: solid 1px black;
+  background-color: rgb(169, 214, 196);
+  font-size: 20px;
+  style: none;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+#gridList {
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  list-style: none;
+}
+
+#gridSelector {
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  height: 200px;
+  border: solid 1px black;
+}
+
+#slideShow {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}

@@ -4,21 +4,18 @@ var createPieces = {
 
 
 
-  update: function() {
+  pieces: [],
+  
+
+  update: function(arg) {
+
+    console.log(arg);
 
   },
 
 
   init: function() {
 
-
-
-    var htmlInject =
-    "<h1 id='title'> SandBox Tetris </h1>" +
-      "<div id='game'>" +
-    "</div>";
-
-    document.getElementById("gameBox").innerHTML = htmlInject;
 
   }
 

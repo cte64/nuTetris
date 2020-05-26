@@ -67,21 +67,3 @@ var setEventHandler = {
     this.keyUpHandler = newHandler;
   }
 }
-
-
-/*
-function one(kee) {
-  console.log(kee.keyCode);
-}
-
-function two() {
-  console.log("two");
-}
-
-function setup() {
-  setEventHandler.setKeyHandler(one);
-}
-
-setup();
-
-*/
