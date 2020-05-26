@@ -15,15 +15,13 @@
             <li class="menuItem" id="sizeSelect" onclick="mainMenu.update(this.id);"> Select Size <br> (25 x 25) </li>
             <li class="menuItem" id="createPieces" onclick="mainMenu.update(this.id);"> Create Custom <br> Pieces </li>
             <li class="menuItem" id="options" onclick="mainMenu.update(this.id);"> In-Game <br> Options </li>
+            <li class="menuItem" id="play" onclick="mainMenu.update(this.id);"> Play </li>
             <li class="lastItem" id="about" onclick="mainMenu.update(this.id);"> About </li>
           </ul>
         </div>
 
         <div id="gameBox">
-            <h1 id="title"> SandBox Tetris </h1>
-            <div id="game">
-              <canvas id="sizeSelectCanvas"></canvas>
-            </div>
+
         </div>
 
       </div>
@@ -32,6 +30,8 @@
 
   <script src="globals.js"> </script>
   <script src="selectSize.js"> </script>
+  <script src="tetris.js"> </script>
+  <script src="createPieces.js"> </script>
   <script src="main.js"> </script>
 
 </html>

@@ -6,15 +6,13 @@ var mainMenu = {
     this.update("sizeSelect");
   },
 
-  sizeSelect: function() {
-    currentObj = new SelectSize();
-  },
-
   update: function(button) {
 
     state = button;
+    if(button == "sizeSelect") selectSize.init();
+    if(button == "createPieces") createPieces.init();
+    if(button == "play") tetris.init(selectSize.width, selectSize.height);
 
-    if(button == "sizeSelect") this.sizeSelect();
 
     // change the color of the menu items ======================================================
     var list = document.getElementById("menuItems");
@@ -27,15 +25,8 @@ var mainMenu = {
 
 };
 
-
-function gameLoop() {
-    requestAnimationFrame(gameLoop);
-    currentObj.selectGameScreen();
-}
-
 function initGame() {
-    mainMenu.init();
-    gameLoop();
+    mainMenu.init(10, 10);
 }
 
 window.onload = initGame;

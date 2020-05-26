@@ -33,8 +33,8 @@
   text-align: center;
 }
 
-#sizeSelectCanvas {
-  border: solid 2px black;
+#sizeSelectCanvas, #tetrisCanvas {
+  margin-top: 10px;
 }
 
 #menuItems {

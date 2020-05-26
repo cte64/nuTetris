@@ -24,8 +24,21 @@ function drawSquare(x, y, width, height, c) {
   }
 }
 
-function relativeCoords(e) {
-  var canvas = document.getElementById("sizeSelectCanvas");
+
+function drawSquare2(x, y, width, height, cName, c) {
+  var canvas = document.getElementById(cName);
+  if (canvas.getContext) {
+    var ctx = canvas.getContext("2d");
+    ctx.strokeStyle = c;
+    ctx.fillStyle = c;
+    ctx.fillRect(x, y, width, height);
+  }
+}
+
+
+function relativeCoords(name, e) {
+  var canvas = document.getElementById(name);
+  if(!canvas) return {x: 0, y: 0};
   var rect = canvas.getBoundingClientRect();
   var xPos = e.clientX - rect.left;
   var yPos = e.clientY - rect.top;
@@ -33,3 +46,42 @@ function relativeCoords(e) {
   if(yPos < 0) yPos = 0;
   return {x: xPos, y: yPos};
 }
+
+
+
+
+var setEventHandler = {
+
+  clickHandler: null,
+  keyUpHandler: null,
+
+  setClickHandler: function(newHandler) {
+    window.removeEventListener('click', this.clickHandler);
+    window.addEventListener('click', newHandler);
+    this.clickHandler = newHandler;
+  },
+
+  setKeyHandler: function(newHandler) {
+    window.removeEventListener('keyup', this.keyUpHandler);
+    window.addEventListener('keyup', newHandler);
+    this.keyUpHandler = newHandler;
+  }
+}
+
+
+/*
+function one(kee) {
+  console.log(kee.keyCode);
+}
+
+function two() {
+  console.log("two");
+}
+
+function setup() {
+  setEventHandler.setKeyHandler(one);
+}
+
+setup();
+
+*/

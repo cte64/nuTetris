@@ -1,15 +1,67 @@
 
 
 
-class SelectSize {
+var selectSize = {
 
-  constructor() {
+  startMatrix: [],
+  maxWidth: 30,
+  maxHeight: 30,
+  width: 10,
+  height: 10,
+  cName: "sizeSelectCanvas",
 
-    this.startMatrix = [];
-    this.maxWidth = 30;
-    this.maxHeight = 30;
-    this.width = 10;
-    this.height = 10;
+
+  update: function(move) {
+
+    var coords = {x: 0, y: 0};
+    if(move != null) coords = relativeCoords(this.cName, move);
+
+    this.width = Math.floor( coords.x / (tileSize + padding));
+    if(this.width < 15) this.width = 15;
+    if(this.width > this.maxWidth) this.width = this.maxWidth;
+
+    this.height = Math.floor( coords.y / (tileSize + padding));
+    if(this.height < 20) this.height = 20;
+    if(this.height > this.maxHeight) this.height = this.maxHeight;
+
+    for(var y = 0; y < this.maxHeight; y++) {
+      for(var x = 0; x < this.maxWidth; x++) {
+        if(y <= this.height && x <= this.width) this.startMatrix[y][x] = true;
+        else this.startMatrix[y][x] = false;
+      }
+    }
+
+    var canvas = document.getElementById(this.cName);
+
+    if(canvas) {
+      var ctx;
+      if (canvas.getContext) {
+        ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      for(var y = 0; y < this.maxHeight; y++) {
+        for(var x = 0; x < this.maxWidth; x++) {
+
+          var xPos = (x * tileSize) + (x * padding ) + padding;
+          var yPos = (y * tileSize) + (y * padding ) + padding;
+
+          if(this.startMatrix[y][x]) drawSquare2(xPos, yPos, tileSize, tileSize, this.cName, "rgb(188, 209, 184)");
+          else drawSquare2(xPos, yPos, tileSize, tileSize, this.cName, "white");
+        }
+      }
+    }
+  },
+
+  init: function() {
+
+    var htmlInject =
+    "<h1 id='title'> SandBox Tetris </h1>" +
+      "<div id='game'>" +
+      "<canvas id='sizeSelectCanvas'></canvas>" +
+    "</div>";
+
+    document.getElementById("gameBox").innerHTML = htmlInject;
 
     for(var y = 0; y<this.maxHeight; y++) {
       var row = [];
@@ -37,61 +89,7 @@ class SelectSize {
     gameBox.style.width = (xPix + 40) + "px";
     gameBox.style.height = (yPix + 40) + "px";
 
-
-    //window.removeEventListener('mousemove', curentObj.eventHandler);
-    window.addEventListener('mousemove', );
-
+    setEventHandler.setClickHandler( function(e) { selectSize.update(e); } );
+    this.update(null);
   }
-
-  eventHandler(move) {
-    var coords = relativeCoords(move);
-
-    console.log(this.width);
-
-
-
-
-    /*
-
-    this.width = Math.floor( coords.x / (tileSize + padding));
-    if(this.width < 15) this.width = 15;
-    if(this.width > this.maxWidth) this.width = this.maxWidth;
-
-    this.height = Math.floor( coords.y / (tileSize + padding));
-    if(this.height < 20) this.height = 20;
-    if(this.height > this.maxHeight) this.height = this.maxHeight;
-
-
-    for(var y = 0; y < this.maxHeight; y++) {
-      for(var x = 0; x < this.maxWidth; x++) {
-        if(y <= this.height && x <= this.width) this.startMatrix[y][x] = true;
-        else this.startMatrix[y][x] = false;
-      }
-    }
-    */
-  }
-
-  selectGameScreen() {
-
-    /*
-
-    var canvas = document.getElementById("sizeSelectCanvas");
-    var ctx;
-    if (canvas.getContext) {
-      ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    for(var y = 0; y < this.maxHeight; y++) {
-      for(var x = 0; x < this.maxWidth; x++) {
-
-        var xPos = (x * tileSize) + (x * padding ) + padding;
-        var yPos = (y * tileSize) + (y * padding ) + padding;
-
-        if(this.startMatrix[y][x]) drawSquare(xPos, yPos, tileSize, tileSize, 'O');
-        else drawSquare(xPos, yPos, tileSize, tileSize, 'P');
-      }
-    }
-    */
-  }
-}
+};
