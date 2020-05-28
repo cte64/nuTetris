@@ -5,9 +5,12 @@ var createPieces = {
 
   numTiles: 6,
   cName: "gridSelector",
+  sName: "slideShow",
   grid: [],
   color: "blue",
   spawnChance: 1,
+  pieces: [],
+  scrollIndex: 0,
 
   draw: function() {
     for(var y = 0; y < this.numTiles; y++) {
@@ -17,6 +20,33 @@ var createPieces = {
         var colorL = "white";
         if(this.grid[y][x]) colorL = this.color;
         drawSquare2(xPos, yPos, tileSize, tileSize, this.cName, colorL);
+      }
+    }
+  },
+
+  drawSlideShow: function() {
+
+
+    var width = this.numTiles*(tileSize + padding) + padding;
+
+    var canvas = document.getElementById(this.sName);
+    if (canvas.getContext) {
+      var ctx = canvas.getContext("2d");
+      ctx.canvas.width = width;
+      ctx.canvas.height = width;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    var currentPiece = this.pieces[this.scrollIndex];
+    console.log(this.scrollIndex);
+
+    for(var y = 0; y < this.numTiles; y++) {
+      for(var x = 0; x < this.numTiles; x++) {
+        var xPos = x*(tileSize + padding) + padding;
+        var yPos = y*(tileSize + padding) + padding;
+        var colorL = "white";
+        if(currentPiece.grid[y][x]) colorL = this.color;
+        drawSquare2(xPos, yPos, tileSize, tileSize, this.sName, colorL);
       }
     }
   },
@@ -59,8 +89,16 @@ var createPieces = {
   },
 
   addPiece: function() {
-    var obj = { numTiles: this.numTiles, grid: this.grid, color: this.color, spawnChance: this.spawnChance };
-    grid.push(obj);
+
+    var obj = { numTiles: this.numTiles, grid: newGrid, color: this.color, spawnChance: this.spawnChance };
+    this.pieces.push(obj);
+    this.drawSlideShow();
+
+
+
+    for(var a = 0; a < this.pieces.length; a++) {
+      console.log(this.pieces[a].grid);
+    }
   },
 
   resetPiece: function() {
@@ -94,9 +132,13 @@ var createPieces = {
     this.color = "#" + value;
     colorInput.value = value;
     this.draw();
+  },
 
-
-
-    console.log(value);
+  scroll: function(direction) {
+    if(direction == "left") this.scrollIndex--;
+    if(direction == "right") this.scrollIndex++;
+    this.scrollIndex = clamp(this.scrollIndex, 0, this.pieces.length - 1);
+    this.drawSlideShow();
   }
+
 };

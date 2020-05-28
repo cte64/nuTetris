@@ -50,8 +50,11 @@ function relativeCoords(name, e) {
   return {x: xPos, y: yPos, bound: inBound};
 }
 
-
-
+function clamp(val, low, high) {
+	if(val < low) val = low;
+	if(val > high) val = high;
+	return val;
+}
 
 var setEventHandler = {
 
