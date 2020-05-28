@@ -42,9 +42,12 @@ function relativeCoords(name, e) {
   var rect = canvas.getBoundingClientRect();
   var xPos = e.clientX - rect.left;
   var yPos = e.clientY - rect.top;
-  if(xPos < 0) xPos = 0;
-  if(yPos < 0) yPos = 0;
-  return {x: xPos, y: yPos};
+  var inBound = true;
+  if(xPos < 0) { xPos = 0; inBound = false; }
+  if(yPos < 0) { yPos = 0; inBound = false; }
+  if(xPos > rect.width) { xPos = rect.width; inBound = false; }
+  if(yPos > rect.height) { xPos = rect.height; inBound = false; }
+  return {x: xPos, y: yPos, bound: inBound};
 }
 
 

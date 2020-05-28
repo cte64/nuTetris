@@ -44,32 +44,22 @@
                 </div>
 
                 <div id="rightSide">
-
                   <ul id="gridList">
-                    <li class="gridControlButton"> Add Piece </li>
-                    <li class="gridControlButton"> Reset Piece  </li>
-
+                    <li class="gridControlButton" onclick="createPieces.addPiece();"> Add Piece </li>
+                    <li class="gridControlButton" onclick="createPieces.resetPiece();"> Reset Piece  </li>
                     <li class="inputForm">
                       <form>
                         <label> Color </label> <br>
-                        <input type="text" id="colorInput">
+                        <input type="text" id="colorInput" value="012345" class="formBox" spellcheck="false">
                       </form>
                     </li>
-
                     <li class="inputForm">
                       <form>
-                        <label> Spawn Chance </label> <br>
-                        <input type="text" id="colorInput">
+                        <label> % Chance </label> <br>
+                        <input type="text" id="spawnChanceInput" class="formBox" spellcheck="false">
                       </form>
                     </li>
                   <ul>
-
-
-
-
-
-
-
                 </div>
               </div>
             </div>

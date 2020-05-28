@@ -35,7 +35,6 @@
   margin-right: auto;
   margin-top: 20px;
   display: table;
-  border: solid 1px black;
 }
 
 #leftSide {
@@ -76,9 +75,7 @@
 #gridSelector {
   top: 0px;
   left: 0px;
-  width: 220px;
-  height: 220px;
-  border: solid 1px black;
+  margin: 20px 30px 0px 0px;
 }
 
 #color {
@@ -97,16 +94,17 @@
   height: 100%;
 }
 
-#colorInput {
+.formBox {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  width: 130px;
-  height: 20px;
+  width: 90px;
+  height: 24px;
+  font-size: 20px;
 }
 
 .inputForm {
   padding: 0px;
-  margin: 5px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
   text-align: left;
   font-size: 20px;
 }

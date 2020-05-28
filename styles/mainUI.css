@@ -1,6 +1,5 @@
 .tableContainer {
   display: table;
-  border: solid 1px black;
   margin: auto;
 }
 
@@ -22,6 +21,7 @@
   display: table-cell;
   width: 600px;
   height: 600px;
+  border: solid 1px black;
 }
 
 #game {
