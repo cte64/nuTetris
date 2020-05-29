@@ -99,7 +99,10 @@ var createPieces = {
     //later I will figure out a better way of doing this
     for(var y = 0; y < this.numTiles; y++) {
       var temp = [];
-      for(var x = 0; x < this.numTiles; x++) { temp.push(ref.grid[y][x]); }
+      for(var x = 0; x < this.numTiles; x++) {
+        if(ref.grid[y][x]) temp.push(this.color);
+        else temp.push(0);
+      }
       this.grid.push(temp);
     }
   },

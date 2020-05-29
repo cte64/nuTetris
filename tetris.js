@@ -48,7 +48,7 @@ var tetris = {
       var row = [];
       for(var x = 0; x<this.width; x++) {
         if(x == 0 || x == this.width - 1  || y == 0 || y == this.height - 1) row.push('T');
-        else row.push(' ');
+        else row.push(0);
       }
       this.board.push(row);
     }
@@ -100,8 +100,7 @@ var tetris = {
           }
         }
 
-        else
-          break;
+        else break;
       }
     }
 },
@@ -109,7 +108,7 @@ var tetris = {
   copyBlockToBoard: function() {
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
       for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
-        if(this.block.matrix[y - this.block.yPos][x - this.block.xPos] != ' ')
+        if(this.block.matrix[y - this.block.yPos][x - this.block.xPos] != 0)
           this.board[y][x] = this.block.matrix[y - this.block.yPos][x - this.block.xPos];
       }
     }
@@ -117,10 +116,15 @@ var tetris = {
 
   overLap: function() {
 
+
+    console.log(this.block.xPos);
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
       for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
-          if( this.board[y][x] != 0 && this.block.matrix[y - this.block.yPos][x - this.block.xPos] != 0)
-            return true;
+          if( this.board[y][x] != 0) {
+            if(this.block.matrix[y - this.block.yPos][x - this.block.xPos] != 0) {
+              return true;
+            }
+          }
       }
     }
     return false;
@@ -251,10 +255,10 @@ var tetris = {
 
         if( y >= this.block.yPos && y < this.block.yPos + BLOCKSIZE && x >= this.block.xPos && x < this.block.xPos + BLOCKSIZE) {
           var c = this.block.matrix[y - this.block.yPos][x - this.block.xPos];
-          if(c != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, c);
-          else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
+          if(c != 0) drawSquare2(xC, yC, tileSize, tileSize, this.cName, c);
+          else if(this.board[y][x] != 0) drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x]);
         }
-        else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
+        else if(this.board[y][x] != 0) drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x]);
       }
     }
 
