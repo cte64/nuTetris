@@ -11,8 +11,8 @@ var mainMenu = {
     state = button;
     if(button == "sizeSelect") selectSize.init();
     if(button == "createPieces") createPieces.init();
-    if(button == "play") tetris.init(selectSize.width, selectSize.height);
-
+    //if(button == "play") tetris.init(selectSize.width, selectSize.height);
+    if(button == "play") tetris.init(20, 20);
 
     // change the color of the menu items ======================================================
     var list = document.getElementById("menuItems");
@@ -22,7 +22,6 @@ var mainMenu = {
       else des[z].style.backgroundColor = "rgb(169, 214, 196)";
     }
   }
-
 };
 
 function initGame() {

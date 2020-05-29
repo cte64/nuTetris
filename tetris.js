@@ -1,17 +1,19 @@
 
 
+/*
+one
 
+*/
 
 var tetris = {
 
-  BLOCKSIZE: 4,
   block: {
     xPos: 0,
     yPos: 0,
-    nextType: 0,
     color: 0,
-    matrix: [[' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']],
-    newMatrix: [[' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']]
+    newColor: 0,
+    matrix: [],
+    newMatrix: []
   },
 
   board: [],
@@ -55,8 +57,16 @@ var tetris = {
     }
 
     //initialize the block matrices
-    this.block.matrix = [[' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']];
-    this.block.newMatrix = [[' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' ']];
+    this.block.matrix = [];
+    this.block.newMatrix = [];
+
+    for(var y = 0; y < BLOCKSIZE; y++) {
+      var row = [];
+      for(var x = 0; x < BLOCKSIZE; x++) { row.push(' '); }
+      this.block.matrix.push(row);
+      this.block.newMatrix.push(row);
+    }
+
     this.block.xPos = 1;
     this.block.yPos = 7;
     this.createBlock();
@@ -64,7 +74,6 @@ var tetris = {
     gameState = "play";
 
     setEventHandler.setKeyHandler( function(e) { tetris.moveBlock(e.key); } );
-
   },
 
   deleteAndShift: function() {
@@ -103,8 +112,8 @@ var tetris = {
 },
 
   copyBlockToBoard: function() {
-    for(var y = this.block.yPos; y < this.block.yPos + this.BLOCKSIZE; y++) {
-      for(var x = this.block.xPos; x < this.block.xPos + this.BLOCKSIZE; x++) {
+    for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
+      for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
         if(this.block.matrix[y - this.block.yPos][x - this.block.xPos] != ' ')
           this.board[y][x] = this.block.matrix[y - this.block.yPos][x - this.block.xPos];
       }
@@ -113,8 +122,8 @@ var tetris = {
 
   overLap: function() {
 
-    for(var y = this.block.yPos; y < this.block.yPos + this.BLOCKSIZE; y++) {
-      for(var x = this.block.xPos; x < this.block.xPos + this.BLOCKSIZE; x++) {
+    for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
+      for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
 
           if( this.board[y][x] != ' ' && this.block.matrix[y - this.block.yPos][x - this.block.xPos] != ' ')
             return true;
@@ -125,8 +134,8 @@ var tetris = {
 
   rotateMatrix: function() {
 
-    for(var y = 0; y< this.BLOCKSIZE/2; y++) {
-      var siz = this.BLOCKSIZE - 2*y;
+    for(var y = 0; y< BLOCKSIZE/2; y++) {
+      var siz = BLOCKSIZE - 2*y;
       var perimeter = 4*siz - 4;
 
       for(var z = 0; z<siz - 1; z++) {
@@ -136,8 +145,8 @@ var tetris = {
           var yIndex = 0;
 
           if(0 <= x  && x <= siz - 1) {xIndex = x + y; yIndex = y; }
-          if(siz - 1 < x  && x < 2*siz - 2) {xIndex = this.BLOCKSIZE - 1 - y; yIndex = x - siz + 1 + y; }
-          if(2*siz - 2 <= x && x <= 3*siz - 3){xIndex = 3*siz - 3 - x + y; yIndex = this.BLOCKSIZE - 1 - y; }
+          if(siz - 1 < x  && x < 2*siz - 2) {xIndex = BLOCKSIZE - 1 - y; yIndex = x - siz + 1 + y; }
+          if(2*siz - 2 <= x && x <= 3*siz - 3){xIndex = 3*siz - 3 - x + y; yIndex = BLOCKSIZE - 1 - y; }
           if(3*siz - 3 < x && x < 4*siz - 4){xIndex = y; yIndex = 4*siz - 4 - x + y; }
 
           var temp = this.block.matrix[yIndex][xIndex];
@@ -192,8 +201,6 @@ var tetris = {
         }
     }
 
-
-
     //ROTATE =======================
     if(moveTo == "ArrowUp") {
       this.rotateMatrix();
@@ -202,8 +209,6 @@ var tetris = {
           this.rotateMatrix();
       }
     }
-
-
 
     //PUNCH DOWN ===================
     if(moveTo == " ") {
@@ -243,22 +248,38 @@ var tetris = {
     ctx.stroke();
 
     //draw the board
+
     for(var y = 1; y < this.height - 1; y++) {
       for(var x = 1; x < this.width- 1; x++) {
-
-
 
         var xC = (x - 1)*tileSize + (x)*padding;
         var yC = (y - 1)*tileSize + (y)*padding;
 
-        if( y >= this.block.yPos && y < this.block.yPos + this.BLOCKSIZE && x >= this.block.xPos && x < this.block.xPos + this.BLOCKSIZE) {
+        if( y >= this.block.yPos && y < this.block.yPos + BLOCKSIZE && x >= this.block.xPos && x < this.block.xPos + BLOCKSIZE) {
           var c = this.block.matrix[y - this.block.yPos][x - this.block.xPos];
           if(c != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, c);
-          else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x]);
+          else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
         }
-        else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x]);
+        else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
       }
     }
+
+    /*
+    for(var y = 1; y < this.height - 1; y++) {
+      for(var x = 1; x < this.width- 1; x++) {
+
+        var xC = (x - 1)*tileSize + (x)*padding;
+        var yC = (y - 1)*tileSize + (y)*padding;
+
+        if( y >= this.block.yPos && y < this.block.yPos + BLOCKSIZE && x >= this.block.xPos && x < this.block.xPos + BLOCKSIZE) {
+          var c = this.block.matrix[y - this.block.yPos][x - this.block.xPos];
+          if(c != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, c);
+          else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
+        }
+        else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
+      }
+    }
+    */
 
     /*
     //draw the next piece
@@ -266,8 +287,8 @@ var tetris = {
     ctx.fillStyle = "black";
     ctx.fillText("Next Piece:", playRegionWidth + 10, 30);
 
-    for(var y = 0; y < this.BLOCKSIZE; y++) {
-      for(var x = 0; x  < this.BLOCKSIZE; x++) {
+    for(var y = 0; y < BLOCKSIZE; y++) {
+      for(var x = 0; x  < BLOCKSIZE; x++) {
         var c = this.block.newMatrix[y][x];
         var xC = x*(tileSize + padding);
         var yC = y*(tileSize + padding);
@@ -291,58 +312,13 @@ var tetris = {
 
   createBlock: function() {
     this.block.matrix = this.block.newMatrix;
-    var newType = Math.floor( Math.random()*7);
+    this.block.color = this.block.newColor;
 
-    if (newType == 0) {
-      this.block.newMatrix = [[' ', ' ', ' ', ' '],
-                              ['M', 'M', ' ', ' '],
-                              ['M', 'M', ' ', ' '],
-                              [' ', ' ', ' ', ' ']];
-    }
+    var index = Math.floor( Math.random() * createPieces.pieces.length);
+    this.block.newMatrix = createPieces.pieces[index].grid;
+    this.block.newColor = createPieces.pieces[index].color;
 
-    if (newType == 1) {
-      this.block.newMatrix = [[' ', ' ', ' ', ' '],
-                              ['N', 'N', 'N', 'N'],
-                              [' ', ' ', ' ', ' '],
-                              [' ', ' ', ' ', ' ']];
-    }
-
-    if (newType == 2) {
-      this.block.newMatrix = [[' ', ' ', ' ', ' '],
-                              [' ', ' ', 'O', ' '],
-                              ['O', 'O', 'O', ' '],
-                              [' ', ' ', ' ', ' ']];
-    }
-
-    if (newType == 3) {
-      this.block.newMatrix = [[' ', ' ', ' ', ' '],
-                              ['P', ' ', ' ', ' '],
-                              ['P', 'P', 'P', ' '],
-                              [' ', ' ', ' ', ' ']];
-    }
-
-    if (newType == 4) {
-      this.block.newMatrix = [[' ', ' ', ' ', ' '],
-                              ['Q', 'Q', 'Q', ' '],
-                              [' ', 'Q', ' ', ' '],
-                              [' ', ' ', ' ', ' ']];
-    }
-
-    if (newType == 5) {
-      this.block.newMatrix = [[' ', ' ', ' ', ' '],
-                              [' ', 'R', 'R', ' '],
-                              ['R', 'R', ' ', ' '],
-                              [' ', ' ', ' ', ' ']];
-    }
-
-    if (newType == 6) {
-      this.block.newMatrix = [[' ', ' ', ' ', ' '],
-                              ['S', 'S', ' ', ' '],
-                              [' ', 'S', 'S', ' '],
-                              [' ', ' ', ' ', ' ']];
-    }
-
-    this.block.xPos = Math.floor(this.width/2 - this.BLOCKSIZE/2 - 1);
+    this.block.xPos = Math.floor(this.width/2 - BLOCKSIZE/2 - 1);
     this.block.yPos = 0;
   }
 

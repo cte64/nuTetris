@@ -1,6 +1,7 @@
 //General game variables
 const tileSize = 20;
 const padding = 1;
+const BLOCKSIZE = 6;
 var currentObj;
 
 

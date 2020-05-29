@@ -38,7 +38,7 @@ var createPieces = {
     }
 
     var currentPiece = this.pieces[this.scrollIndex];
-    console.log(this.scrollIndex);
+    if(currentPiece == undefined) return;
 
     for(var y = 0; y < this.numTiles; y++) {
       for(var x = 0; x < this.numTiles; x++) {
@@ -84,6 +84,8 @@ var createPieces = {
     this.color = "#aaaaaa";
 
     this.draw();
+    this.drawSlideShow();
+
     setEventHandler.setClickHandler( function(e) { createPieces.update(e); } );
     setEventHandler.setKeyHandler( function(e) { createPieces.colorChange(); } );
   },
@@ -105,7 +107,9 @@ var createPieces = {
   addPiece: function() {
     var obj = new this.Piece(this);
     this.pieces.push(obj);
+    this.scrollIndex = this.pieces.length - 1;
     this.drawSlideShow();
+    this.resetPiece();
   },
 
   resetPiece: function() {
