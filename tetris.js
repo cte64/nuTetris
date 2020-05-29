@@ -115,19 +115,17 @@ var tetris = {
   },
 
   overLap: function() {
-
-
-    console.log(this.block.xPos);
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
       for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
-          if( this.board[y][x] != 0) {
-            if(this.block.matrix[y - this.block.yPos][x - this.block.xPos] != 0) {
+
+          var yInd = clamp(y, 0, this.board.length - 1);
+          var xInd = clamp(x, 0, this.board[0].length - 1);
+
+          if( this.board[yInd][xInd] != 0 &&this.block.matrix[yInd - this.block.yPos][xInd - this.block.xPos] != 0)
               return true;
-            }
-          }
+        }
       }
-    }
-    return false;
+      return false;
   },
 
   rotateMatrix: function() {
