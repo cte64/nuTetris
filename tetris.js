@@ -2,7 +2,6 @@
 
 /*
 one
-
 */
 
 var tetris = {
@@ -48,10 +47,8 @@ var tetris = {
     for(var y = 0; y<this.height; y++) {
       var row = [];
       for(var x = 0; x<this.width; x++) {
-        if(x == 0 || x == this.width - 1  || y == 0 || y == this.height - 1)
-          row.push('T');
-        else
-          row.push(' ');
+        if(x == 0 || x == this.width - 1  || y == 0 || y == this.height - 1) row.push('T');
+        else row.push(' ');
       }
       this.board.push(row);
     }
@@ -62,7 +59,7 @@ var tetris = {
 
     for(var y = 0; y < BLOCKSIZE; y++) {
       var row = [];
-      for(var x = 0; x < BLOCKSIZE; x++) { row.push(' '); }
+      for(var x = 0; x < BLOCKSIZE; x++) { row.push(0); }
       this.block.matrix.push(row);
       this.block.newMatrix.push(row);
     }
@@ -80,7 +77,7 @@ var tetris = {
 
     //check if player has lost the game
     for(var x = 1; x < this.width - 1; x++) {
-      if(this.board[1][x] != ' ') {
+      if(this.board[1][x] != 0) {
         if(gameState == "play") {
           gameState = "gameOver";
           document.getElementById("gameBoard").innerHTML += gameOverHTML;
@@ -92,16 +89,14 @@ var tetris = {
       while(true) {
         var flag = true;
         for(var x = 1; x < this.height - 1; x++) {
-          if( this.board[z][x] == ' ')
+          if( this.board[z][x] == 0)
             flag = false;
         }
 
         if(flag) {
           this.score += 100;
           for(var x = 1; x < this.width - 1; x++) {
-            for(var y = z; y != 0; y--) {
-              this.board[y][x] = (y > 1) ? this.board[y - 1][x] : ' ';
-            }
+            for(var y = z; y != 0; y--) { this.board[y][x] = (y > 1) ? this.board[y - 1][x] : 0; }
           }
         }
 
@@ -124,8 +119,7 @@ var tetris = {
 
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
       for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
-
-          if( this.board[y][x] != ' ' && this.block.matrix[y - this.block.yPos][x - this.block.xPos] != ' ')
+          if( this.board[y][x] != 0 && this.block.matrix[y - this.block.yPos][x - this.block.xPos] != 0)
             return true;
       }
     }
