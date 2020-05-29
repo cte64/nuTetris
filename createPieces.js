@@ -45,7 +45,7 @@ var createPieces = {
         var xPos = x*(tileSize + padding) + padding;
         var yPos = y*(tileSize + padding) + padding;
         var colorL = "white";
-        if(currentPiece.grid[y][x]) colorL = this.color;
+        if(currentPiece.grid[y][x]) colorL = currentPiece.color;
         drawSquare2(xPos, yPos, tileSize, tileSize, this.sName, colorL);
       }
     }
@@ -88,17 +88,24 @@ var createPieces = {
     setEventHandler.setKeyHandler( function(e) { createPieces.colorChange(); } );
   },
 
-  addPiece: function() {
+  Piece: function(ref) {
+    this.numTiles = ref.numTiles;
+    this.color = ref.color;
+    this.spawnChance = ref.spawnChance;
+    this.grid = [];
 
-    var obj = { numTiles: this.numTiles, grid: newGrid, color: this.color, spawnChance: this.spawnChance };
+    //later I will figure out a better way of doing this
+    for(var y = 0; y < this.numTiles; y++) {
+      var temp = [];
+      for(var x = 0; x < this.numTiles; x++) { temp.push(ref.grid[y][x]); }
+      this.grid.push(temp);
+    }
+  },
+
+  addPiece: function() {
+    var obj = new this.Piece(this);
     this.pieces.push(obj);
     this.drawSlideShow();
-
-
-
-    for(var a = 0; a < this.pieces.length; a++) {
-      console.log(this.pieces[a].grid);
-    }
   },
 
   resetPiece: function() {
