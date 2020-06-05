@@ -24,19 +24,16 @@ var tetris = {
   cName: "tetrisCanvas",
 
   init: function(width, height) {
+
+    //update the page
+    document.getElementById("gameBox").innerHTML = tetrisInject;
+
+    
     this.width = width;
     this.height = height;
     this.board = [];
 
-    var htmlInject =
-    "<h1 id='title'> SandBox Tetris </h1>" +
-    "<div id='game'>" +
-      "<canvas id='tetrisCanvas'></canvas>" +
-    "</div>";
-
-    document.getElementById("gameBox").innerHTML = htmlInject;
     var canvas = document.getElementById(this.cName);
-
     if (canvas.getContext) {
       var ctx = canvas.getContext("2d");
       ctx.canvas.width = (this.width - 2)*tileSize + (this.width - 1)*padding;

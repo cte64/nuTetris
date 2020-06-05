@@ -69,6 +69,10 @@ var createPieces = {
 
   init: function() {
 
+
+    //update the page
+    document.getElementById("gameBox").innerHTML = createPieceInject;
+
     var canvas = document.getElementById(this.cName);
     if (canvas.getContext) {
       var ctx = canvas.getContext("2d");

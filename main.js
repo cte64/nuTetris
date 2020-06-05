@@ -9,10 +9,12 @@ var mainMenu = {
   update: function(button) {
 
     state = button;
+
     if(button == "sizeSelect") selectSize.init();
     if(button == "createPieces") createPieces.init();
-    //if(button == "play") tetris.init(selectSize.width, selectSize.height);
-    if(button == "play") tetris.init(20, 20);
+    if(button == "inGameOptions") inGameOptions.init();
+    if(button == "play") tetris.init(selectSize.width, selectSize.height);
+    if(button == "about") about.init();
 
     // change the color of the menu items ======================================================
     var list = document.getElementById("menuItems");

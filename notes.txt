@@ -4,3 +4,4 @@
 - make the grid 5x5
 - actually IMPLEMENT the chance thing
 - make each button work forealz
+- select a font that works with different browsers

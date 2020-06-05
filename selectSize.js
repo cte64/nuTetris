@@ -55,13 +55,9 @@ var selectSize = {
 
   init: function() {
 
-    var htmlInject =
-    "<h1 id='title'> SandBox Tetris </h1>" +
-      "<div id='game'>" +
-      "<canvas id='sizeSelectCanvas'></canvas>" +
-    "</div>";
 
-    document.getElementById("gameBox").innerHTML = htmlInject;
+
+    document.getElementById("gameBox").innerHTML = selectSizeInject;
 
     for(var y = 0; y<this.maxHeight; y++) {
       var row = [];
