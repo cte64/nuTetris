@@ -1,0 +1,6 @@
+- make the default page the "select size" one
+- create some default pieces so it isn't just a blank scroll board
+- fix the "chance" label
+- make the grid 5x5
+- actually IMPLEMENT the chance thing
+- make each button work forealz

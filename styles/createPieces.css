@@ -28,6 +28,7 @@
   display: table-cell;
   width: 80%;
   background-color: rgb(235, 235, 235);
+  text-align: center;
 }
 
 #gridControls {
@@ -100,6 +101,15 @@
   width: 90px;
   height: 24px;
   font-size: 20px;
+}
+
+#deleteButton {
+  width: 100px;
+  height: 15px;
+  padding: 5px;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .inputForm {

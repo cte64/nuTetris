@@ -31,18 +31,20 @@
 
             <div id="scrollBar">
                 <div class="sideBar"> <img id="leftArrow" src="images/arrow.png" onclick="createPieces.scroll('left');"> </div>
-                <div id="middle"> <canvas id="slideShow"> </canvas> </div>
+                <div id="middle">
+                  <canvas id="slideShow"> </canvas>
+                    <div id="pieceChance"> Chance </div>
+                    <div class="gridControlButton" id="deleteButton" onclick="createPieces.deletePiece();"> Delete </div>
+                  </ul>
+                </div>
                 <div class="sideBar"> <img id="rightArrow" src="images/arrow.png" onclick="createPieces.scroll('right');"> </div>
             </div>
-
-
 
             <div class="tableContainer" id="gridControls">
               <div class="tableRow">
                 <div id="leftSide">
                   <canvas id="gridSelector"> </canvas>
                 </div>
-
                 <div id="rightSide">
                   <ul id="gridList">
                     <li class="gridControlButton" onclick="createPieces.addPiece();"> Add Piece </li>
@@ -63,11 +65,7 @@
                 </div>
               </div>
             </div>
-
-
           </div>
-
-
         </div>
 
       </div>

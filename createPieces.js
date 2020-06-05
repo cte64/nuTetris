@@ -40,6 +40,9 @@ var createPieces = {
     var currentPiece = this.pieces[this.scrollIndex];
     if(currentPiece == undefined) return;
 
+    var chanceDiv = document.getElementById("pieceChance");
+    chanceDiv.innerHTML = "Chance: " + this.pieces[this.scrollIndex].spawnChance;
+
     for(var y = 0; y < this.numTiles; y++) {
       for(var x = 0; x < this.numTiles; x++) {
         var xPos = x*(tileSize + padding) + padding;
@@ -113,6 +116,14 @@ var createPieces = {
     this.scrollIndex = this.pieces.length - 1;
     this.drawSlideShow();
     this.resetPiece();
+  },
+
+  deletePiece: function() {
+    this.pieces.splice(this.scrollIndex, 1);
+    var newIndex = this.scrollIndex;
+    newIndex = clamp(newIndex, 0, this.pieces.length - 1);
+    this.scrollIndex = newIndex;
+    this.drawSlideShow();
   },
 
   resetPiece: function() {
