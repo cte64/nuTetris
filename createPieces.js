@@ -3,7 +3,6 @@
 var createPieces = {
 
 
-  numTiles: 6,
   cName: "gridSelector",
   sName: "slideShow",
   grid: [],
@@ -13,8 +12,8 @@ var createPieces = {
   scrollIndex: 0,
 
   draw: function() {
-    for(var y = 0; y < this.numTiles; y++) {
-      for(var x = 0; x < this.numTiles; x++) {
+    for(var y = 0; y < BLOCKSIZE; y++) {
+      for(var x = 0; x < BLOCKSIZE; x++) {
         var xPos = x*(tileSize + padding) + padding;
         var yPos = y*(tileSize + padding) + padding;
         var colorL = "white";
@@ -27,7 +26,7 @@ var createPieces = {
   drawSlideShow: function() {
 
 
-    var width = this.numTiles*(tileSize + padding) + padding;
+    var width = BLOCKSIZE*(tileSize + padding) + padding;
 
     var canvas = document.getElementById(this.sName);
     if (canvas.getContext) {
@@ -43,8 +42,9 @@ var createPieces = {
     var chanceDiv = document.getElementById("pieceChance");
     chanceDiv.innerHTML = "Chance: " + this.pieces[this.scrollIndex].spawnChance;
 
-    for(var y = 0; y < this.numTiles; y++) {
-      for(var x = 0; x < this.numTiles; x++) {
+    for(var y = 0; y < BLOCKSIZE; y++) {
+      for(var x = 0; x < BLOCKSIZE; x++) {
+
         var xPos = x*(tileSize + padding) + padding;
         var yPos = y*(tileSize + padding) + padding;
         var colorL = "white";
@@ -69,26 +69,25 @@ var createPieces = {
 
   init: function() {
 
-
     //update the page
     document.getElementById("gameBox").innerHTML = createPieceInject;
 
     var canvas = document.getElementById(this.cName);
     if (canvas.getContext) {
       var ctx = canvas.getContext("2d");
-      var width = this.numTiles*(tileSize + padding) + padding;
+      var width = BLOCKSIZE*(tileSize + padding) + padding;
       ctx.canvas.width = width;
       ctx.canvas.height = width;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    for(var y = 0; y < this.numTiles; y++) {
+    for(var y = 0; y < BLOCKSIZE; y++) {
       var row = [];
-      for(var x = 0; x < this.numTiles; x++) { row.push(0); }
+      for(var x = 0; x < BLOCKSIZE; x++) { row.push(0); }
       this.grid.push(row);
     }
 
-    this.color = "#aaaaaa";
+    this.color = numToColor( document.getElementById('colorPicker').value );
 
     this.draw();
     this.drawSlideShow();
@@ -98,15 +97,15 @@ var createPieces = {
   },
 
   Piece: function(ref) {
-    this.numTiles = ref.numTiles;
+
     this.color = ref.color;
     this.spawnChance = ref.spawnChance;
     this.grid = [];
 
     //later I will figure out a better way of doing this
-    for(var y = 0; y < this.numTiles; y++) {
+    for(var y = 0; y < BLOCKSIZE; y++) {
       var temp = [];
-      for(var x = 0; x < this.numTiles; x++) {
+      for(var x = 0; x < BLOCKSIZE; x++) {
         if(ref.grid[y][x]) temp.push(this.color);
         else temp.push(0);
       }
@@ -120,6 +119,14 @@ var createPieces = {
     this.scrollIndex = this.pieces.length - 1;
     this.drawSlideShow();
     this.resetPiece();
+
+
+    //make the play option available
+    var play = document.getElementById('play');
+    if(play == null) {
+      var newPlay =   '<li class="menuItem" id="play" onclick="mainMenu.update(this.id);"> Play </li>';
+      document.getElementById('menuItems').innerHTML += newPlay;
+    }
   },
 
   deletePiece: function() {
@@ -128,38 +135,26 @@ var createPieces = {
     newIndex = clamp(newIndex, 0, this.pieces.length - 1);
     this.scrollIndex = newIndex;
     this.drawSlideShow();
+
+    //remove the option to play
+    var play = document.getElementById('play');
+    if(this.pieces.length == 0 && play != null) document.getElementById('menuItems').removeChild(play);
   },
 
   resetPiece: function() {
-    for(var y = 0; y < this.numTiles; y++) {
-      for(var x = 0; x < this.numTiles; x++) {
+    for(var y = 0; y < BLOCKSIZE; y++) {
+      for(var x = 0; x < BLOCKSIZE; x++) {
         this.grid[y][x] = 0;
       }
     }
 
 
     this.draw();
-    this.color = "012345";
-    this.colorChange();
+    this.colorChange( document.getElementById('colorPicker').value );
   },
 
-  colorChange: function() {
-    var colorInput = document.getElementById("colorInput");
-    var value = colorInput.value.toUpperCase();
-    var validChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
-
-
-    //reject incorrectly formatted inputs
-    if(value.length < 6) return;
-    if(value.length > 6) value = value.substr(0, 6);
-
-    for(var x = 0; x < value.length; x++) {
-      if(!validChars.includes(value[x]))
-        return;
-    }
-
-    this.color = "#" + value;
-    colorInput.value = value;
+  colorChange: function(value) {
+    this.color = numToColor(value);
     this.draw();
   },
 

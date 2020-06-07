@@ -5,18 +5,19 @@ var selectSizeInject =
   "<canvas id='sizeSelectCanvas'></canvas>" +
 "</div>";
 
-var createPieceInject =
+var slideShowMiddle =
+"<canvas id='slideShow'> </canvas>" +
+"<div id='pieceChance'> Chance </div>" +
+"<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>";
 
+var createPieceInject =
 "<h1 id='title'> SandBox Tetris </h1>" +
 "<div id='game'>" +
 
   "<div id='scrollBar'>" +
       "<div class='sideBar'> <img id='leftArrow' src='images/arrow.png' onclick='createPieces.scroll('left');'> </div>" +
       "<div id='middle'>" +
-        "<canvas id='slideShow'> </canvas>" +
-          "<div id='pieceChance'> Chance </div>" +
-          "<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>" +
-        "</ul>" +
+      slideShowMiddle + 
       "</div>" +
       "<div class='sideBar'> <img id='rightArrow' src='images/arrow.png' onclick='createPieces.scroll('right');'> </div>" +
   "</div>" +
@@ -33,7 +34,7 @@ var createPieceInject =
           "<li class='inputForm'>" +
             "<form>" +
               "<label> Color </label> <br>" +
-              "<input type='text' id='colorInput' value='012345' class='formBox' spellcheck='false'>" +
+              "<input id='colorPicker' type='range' min='1' max='255' value='0' onchange='createPieces.colorChange(this.value)'> " +
             "</form>" +
           "</li>" +
           "<li class='inputForm'>" +
@@ -49,6 +50,7 @@ var createPieceInject =
 "</div>";
 
 var inGameOptionsInject = "";
+
 
 var tetrisInject =
 "<h1 id='title'> SandBox Tetris </h1>" +

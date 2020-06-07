@@ -51,11 +51,16 @@ var selectSize = {
         }
       }
     }
+
+
+
+    //update the select size label
+    var sLabel = document .getElementById('sizeSelect');
+    sLabel.innerHTML = "Select Size <br> (" + this.width + "x" + this.height + ")";
+
   },
 
   init: function() {
-
-
 
     document.getElementById("gameBox").innerHTML = selectSizeInject;
 
