@@ -12,14 +12,13 @@
   <body>
     <div class="tableContainer">
       <div class="tableRow">
- 
+
         <div id="menu">
-          <ul id="menuItems">
-            <li class="menuItem" id="sizeSelect" onclick="mainMenu.update(this.id);"> Select Size <br> (25 x 25) </li>
-            <li class="menuItem" id="createPieces" onclick="mainMenu.update(this.id);"> Create Custom <br> Pieces </li>
-            <li class="menuItem" id="inGameOptions" onclick="mainMenu.update(this.id);"> In-Game <br> Options </li>
-            <li class="lastItem" id="about" onclick="mainMenu.update(this.id);"> About </li>
-          </ul>
+          <ul id='menuItems'> <li class='menuItem' id='pausedMenu' onclick=''> Paused </li> </ul>
+          <p id='nextPieceLabel'> Next Piece: </p>
+          <canvas id='nextPiece'> </canvas>
+          <p id='score'> Score: </p>
+          <p id='Speed:'> Speed: </p>
         </div>
 
         <div id="gameBox">
@@ -29,15 +28,15 @@
     </div>
   </body>
 
-  <script src="globals.js"> </script>
-  <script src="htmlInject.js"> </script>
+  <script src="scripts/globals.js"> </script>
+  <script src="scripts/htmlInject.js"> </script>
 
-  <script src="selectSize.js"> </script>
-  <script src="createPieces.js"> </script>
-  <script src="inGameOptions.js"> </script>
-  <script src="tetris.js"> </script>
-  <script src="about.js"> </script>
+  <script src="scripts/selectSize.js"> </script>
+  <script src="scripts/createPieces.js"> </script>
+  <script src="scripts/inGameOptions.js"> </script>
+  <script src="scripts/tetris.js"> </script>
+  <script src="scripts/about.js"> </script>
 
-  <script src="main.js"> </script>
+  <script src="scripts/main.js"> </script>
 
 </html>

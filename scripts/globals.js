@@ -1,33 +1,15 @@
 //General game variables
 const tileSize = 20;
 const padding = 1;
+const sideBarWidth = 100;
 const BLOCKSIZE = 5;
 var currentObj;
 
 
-function drawSquare(x, y, width, height, c) {
-
-  var color = "white";
-  if(c == 'M') color = "red";
-  if(c == 'N') color = "blue";
-  if(c == 'O') color = "green";
-  if(c == 'P') color = "brown";
-  if(c == 'Q') color = "orange";
-  if(c == 'R') color = "magenta";
-  if(c == 'S') color = "yellow";
-
-  var canvas = document.getElementById("sizeSelectCanvas");
-  if (canvas.getContext) {
-    var ctx = canvas.getContext("2d");
-    ctx.strokeStyle = color;
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, width, height);
-  }
-}
-
-
 function drawSquare2(x, y, width, height, cName, c) {
   var canvas = document.getElementById(cName);
+  if(canvas == null) return;
+
   if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
     ctx.strokeStyle = c;

@@ -29,7 +29,7 @@ var createPieces = {
     var width = BLOCKSIZE*(tileSize + padding) + padding;
 
     var canvas = document.getElementById(this.sName);
-    if (canvas.getContext) {
+    if (canvas != null && canvas.getContext) {
       var ctx = canvas.getContext("2d");
       ctx.canvas.width = width;
       ctx.canvas.height = width;
@@ -40,7 +40,7 @@ var createPieces = {
     if(currentPiece == undefined) return;
 
     var chanceDiv = document.getElementById("pieceChance");
-    chanceDiv.innerHTML = "Chance: " + this.pieces[this.scrollIndex].spawnChance;
+    if(chanceDiv != null) chanceDiv.innerHTML = "Chance: " + this.pieces[this.scrollIndex].spawnChance;
 
     for(var y = 0; y < BLOCKSIZE; y++) {
       for(var x = 0; x < BLOCKSIZE; x++) {
@@ -117,9 +117,6 @@ var createPieces = {
     var obj = new this.Piece(this);
     this.pieces.push(obj);
     this.scrollIndex = this.pieces.length - 1;
-    this.drawSlideShow();
-    this.resetPiece();
-
 
     //make the play option available
     var play = document.getElementById('play');
@@ -127,6 +124,14 @@ var createPieces = {
       var newPlay =   '<li class="menuItem" id="play" onclick="mainMenu.update(this.id);"> Play </li>';
       document.getElementById('menuItems').innerHTML += newPlay;
     }
+
+    //add the chance and delete fields
+    var middle = document.getElementById('middle');
+    middle.innerHTML = slideShowMiddle;
+
+    //uddate the board
+    this.drawSlideShow();
+    this.resetPiece();
   },
 
   deletePiece: function() {
@@ -139,6 +144,10 @@ var createPieces = {
     //remove the option to play
     var play = document.getElementById('play');
     if(this.pieces.length == 0 && play != null) document.getElementById('menuItems').removeChild(play);
+
+    //delete the html from the middle
+    var middle = document.getElementById('middle');
+    if(this.pieces.length == 0 && middle.innerHTML != '') middle.innerHTML = '';
   },
 
   resetPiece: function() {
@@ -159,8 +168,8 @@ var createPieces = {
   },
 
   scroll: function(direction) {
-    if(direction == "left") this.scrollIndex--;
-    if(direction == "right") this.scrollIndex++;
+    if(direction == 0) this.scrollIndex--;
+    if(direction == 1) this.scrollIndex++;
     this.scrollIndex = clamp(this.scrollIndex, 0, this.pieces.length - 1);
     this.drawSlideShow();
   }

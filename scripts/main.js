@@ -3,6 +3,8 @@ var mainMenu = {
 
   state: "",
   init: function() {
+    //var menu = document.getElementById('menu');
+    //if(menu != null) menu.innerHTML = menuSideBar;
     this.update("sizeSelect");
   },
 
