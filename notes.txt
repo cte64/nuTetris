@@ -1,3 +1,5 @@
-- fix the "chance" label
-- actually IMPLEMENT the chance thing
 - select a font that works with different browsers
+- implement the timer once and for all
+- fix up the sidebar and make it work
+- make the pause menu work
+- add hover sounds and click sounds and sounds for gameplay

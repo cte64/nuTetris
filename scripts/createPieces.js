@@ -7,7 +7,6 @@ var createPieces = {
   sName: "slideShow",
   grid: [],
   color: "blue",
-  spawnChance: 1,
   pieces: [],
   scrollIndex: 0,
 
@@ -39,8 +38,6 @@ var createPieces = {
     var currentPiece = this.pieces[this.scrollIndex];
     if(currentPiece == undefined) return;
 
-    var chanceDiv = document.getElementById("pieceChance");
-    if(chanceDiv != null) chanceDiv.innerHTML = "Chance: " + this.pieces[this.scrollIndex].spawnChance;
 
     for(var y = 0; y < BLOCKSIZE; y++) {
       for(var x = 0; x < BLOCKSIZE; x++) {
@@ -99,7 +96,6 @@ var createPieces = {
   Piece: function(ref) {
 
     this.color = ref.color;
-    this.spawnChance = ref.spawnChance;
     this.grid = [];
 
     //later I will figure out a better way of doing this
@@ -125,7 +121,7 @@ var createPieces = {
       document.getElementById('menuItems').innerHTML += newPlay;
     }
 
-    //add the chance and delete fields
+    //add the delete fields
     var middle = document.getElementById('middle');
     middle.innerHTML = slideShowMiddle;
 
@@ -156,7 +152,6 @@ var createPieces = {
         this.grid[y][x] = 0;
       }
     }
-
 
     this.draw();
     this.colorChange( document.getElementById('colorPicker').value );

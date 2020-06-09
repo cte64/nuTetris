@@ -23,12 +23,20 @@ var tetris = {
   height: 10,
   cName: "tetrisCanvas",
 
+  pause: function() {
+    document.getElementById('menu').innerHTML = menuSideBar;
+    mainMenu.update("sizeSelect");
+    createPieces.pieces = [];
+  },
+
   init: function(width, height) {
 
     //update the page
     document.getElementById("gameBox").innerHTML = tetrisInject;
 
-    
+    //set the sideBar
+    document.getElementById('menu').innerHTML = tetrisSideBar;
+
     this.width = width;
     this.height = height;
     this.board = [];
@@ -38,6 +46,13 @@ var tetris = {
       var ctx = canvas.getContext("2d");
       ctx.canvas.width = (this.width - 2)*tileSize + (this.width - 1)*padding;
       ctx.canvas.height = (this.height- 2)*tileSize + (this.height - 1)*padding;
+    }
+
+    var np = document.getElementById('nextPiece');
+    if(np.getContext) {
+      var ctx = np.getContext('2d');
+      ctx.canvas.width = (BLOCKSIZE * tileSize) + (BLOCKSIZE + 1)*padding;
+      ctx.canvas.height = ctx.canvas.width;
     }
 
     //initialize the board
@@ -65,9 +80,13 @@ var tetris = {
     this.block.yPos = 7;
     this.createBlock();
     this.createBlock();
-    gameState = "play";
+    this.gameState = "play";
 
     setEventHandler.setKeyHandler( function(e) { tetris.moveBlock(e.key); } );
+  },
+
+  clearPieces: function() {
+    this.pieces.clear();
   },
 
   deleteAndShift: function() {
@@ -75,8 +94,8 @@ var tetris = {
     //check if player has lost the game
     for(var x = 1; x < this.width - 1; x++) {
       if(this.board[1][x] != 0) {
-        if(gameState == "play") {
-          gameState = "gameOver";
+        if(this.gameState == "play") {
+          this.gameState = "gameOver";
           document.getElementById("gameBoard").innerHTML += gameOverHTML;
         }
       }
@@ -154,19 +173,23 @@ var tetris = {
 
     //PAUSE ========================
     if(moveTo == "Escape") {
+      if(this.gameState == "paused") {
+        this.gameState = "play";
 
-      if(gameState == "paused") {
-        gameState = "play";
-        var elem = document.getElementById("pausedMenu");
-        document.getElementById("gameBoard").removeChild(elem);
+        //remove the overlay
+        var overlay = document.getElementById('pausedOverlay');
+        if(overlay != null) document.getElementById("tableContainer").removeChild(overlay);
       }
-      else if (gameState == "play") {
-        gameState = "paused";
-        document.getElementById("gameBoard").innerHTML += pausedHTML;
+      else if (this.gameState == "play") {
+        this.gameState = "paused";
+
+        //add the overlay
+        var newH = "<div id='pausedOverlay'> </div>";
+        document.getElementById("tableContainer").innerHTML += newH;
       }
     }
 
-    if(gameState != "play") {
+    if(this.gameState != "play") {
       this.drawBoard();
       return;
     }
@@ -224,24 +247,12 @@ var tetris = {
 
     //clear the board
     var canvas = document.getElementById(this.cName);
-    var ctx;
     if (canvas.getContext) {
-      ctx = canvas.getContext("2d");
+      var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-
-    //draw the outlines
-    var boardWidth = (this.width - 2)*tileSize + (this.width - 1)*padding;
-    var boardHeight = (this.height - 2)*tileSize + (this.height - 1)*padding;
-    ctx.beginPath();
-    ctx.lineWidth = "1";
-    ctx.strokeStyle = "black";
-    ctx.rect(0, 0, boardWidth, boardHeight);
-    ctx.stroke();
-
     //draw the board
-
     for(var y = 1; y < this.height - 1; y++) {
       for(var x = 1; x < this.width- 1; x++) {
 
@@ -257,50 +268,27 @@ var tetris = {
       }
     }
 
-    /*
-    for(var y = 1; y < this.height - 1; y++) {
-      for(var x = 1; x < this.width- 1; x++) {
-
-        var xC = (x - 1)*tileSize + (x)*padding;
-        var yC = (y - 1)*tileSize + (y)*padding;
-
-        if( y >= this.block.yPos && y < this.block.yPos + BLOCKSIZE && x >= this.block.xPos && x < this.block.xPos + BLOCKSIZE) {
-          var c = this.block.matrix[y - this.block.yPos][x - this.block.xPos];
-          if(c != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, c);
-          else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
-        }
-        else if(this.board[y][x] != ' ') drawSquare2(xC, yC, tileSize, tileSize, this.cName, this.board[y][x].color);
-      }
-    }
-    */
-
-    /*
     //draw the next piece
-    ctx.font = "20px Courier";
-    ctx.fillStyle = "black";
-    ctx.fillText("Next Piece:", playRegionWidth + 10, 30);
+    var nP = document.getElementById('nextPiece');
+    if (nP.getContext) {
+      var npCtx = nP.getContext('2d');
+      npCtx.clearRect(0, 0, nP.width, nP.height);
+    }
 
     for(var y = 0; y < BLOCKSIZE; y++) {
       for(var x = 0; x  < BLOCKSIZE; x++) {
         var c = this.block.newMatrix[y][x];
         var xC = x*(tileSize + padding);
         var yC = y*(tileSize + padding);
-        if(c != ' ') drawSquare(xC + playRegionWidth + 35, yC + 30, tileSize, tileSize, c);
+        if(c != ' ') drawSquare2(xC, yC, tileSize, tileSize, 'nextPiece', c);
       }
     }
 
-    //show the score
-    ctx.font = "20px Courier";
-    ctx.fillStyle = "black";
-    ctx.fillText("Score: " + this.score, playRegionWidth + 10, 130);
+    //if the game is paused, make a semi-transparent overlay
 
-    if(gameState == "paused") {
-        var color = "rgba(200, 200, 200, 0.3)";
-        ctx.strokeStyle = color;
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    }
-    */
+
+
+
 },
 
   createBlock: function() {

@@ -3,9 +3,13 @@ var mainMenu = {
 
   state: "",
   init: function() {
-    //var menu = document.getElementById('menu');
-    //if(menu != null) menu.innerHTML = menuSideBar;
+    var menu = document.getElementById('menu');
+    if(menu != null) menu.innerHTML = menuSideBar;
     this.update("sizeSelect");
+
+
+
+
   },
 
   playable: false,
@@ -17,7 +21,7 @@ var mainMenu = {
     if(state == "sizeSelect") selectSize.init();
     if(state == "createPieces") createPieces.init();
     if(state == "inGameOptions") inGameOptions.init();
-    if(state == "play") tetris.init(selectSize.width, selectSize.height);
+    if(state == "play") tetris.init(selectSize.width + 2, selectSize.height + 2);
     if(state == "about") about.init();
 
     // change the color of the menu items ======================================================

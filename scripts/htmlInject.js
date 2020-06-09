@@ -7,8 +7,14 @@ var selectSizeInject =
 
 var slideShowMiddle =
 "<canvas id='slideShow'> </canvas>" +
-"<div id='pieceChance'> Chance </div>" +
 "<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>";
+
+var tetrisSideBar =
+"<ul id='menuItems'> <li class='menuItem' id='pausedMenu' onclick='tetris.pause();'> Paused </li> </ul>" +
+"<p id='nextPieceLabel'> Next Piece: </p>" +
+"<canvas id='nextPiece'> </canvas>" +
+"<p id='score'> Score: </p>" +
+"<p id='Speed:'> Speed: </p>";
 
 var menuSideBar =
 "<ul id='menuItems'>" +
@@ -17,7 +23,6 @@ var menuSideBar =
   "<li class='menuItem' id='createPieces' onclick='mainMenu.update(this.id);'> Create Custom <br> Pieces </li>" +
   "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
 "</ul>";
-
 
 var createPieceInject =
 "<h1 id='title'> SandBox Tetris </h1>" +
