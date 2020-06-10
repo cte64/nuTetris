@@ -74,10 +74,11 @@
 }
 
 .gridControlButton {
+  font-family: "custom";
+  font-size: 15px;
   display: block;
   border: solid 1px black;
   background-color: rgb(169, 214, 196);
-  font-size: 22px;
   style: none;
   text-decoration: none;
   border-radius: 6px;

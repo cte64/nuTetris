@@ -17,5 +17,6 @@
 }
 
 .tetrisTitles {
-  font-size: 23px;
+  font-family: "custom";
+  font-size: 18px;
 }

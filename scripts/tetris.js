@@ -12,7 +12,9 @@ var tetris = {
     color: 0,
     newColor: 0,
     matrix: [],
-    newMatrix: []
+    newMatrix: [],
+    virtualX: 0,
+    virtualY: 0
   },
 
   board: [],
@@ -293,6 +295,8 @@ var tetris = {
         if(c != ' ') drawSquare2(xC, yC, tileSize, tileSize, 'nextPiece', c);
       }
     }
+
+    
 
     //if the game is paused, make a semi-transparent overlay
 

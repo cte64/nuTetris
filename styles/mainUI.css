@@ -1,3 +1,9 @@
+
+@font-face {
+  font-family: "custom";
+  src: url("../fonts/NineteenNinetySeven-11XB.ttf")
+}
+
 #tableContainer {
   display: table;
   margin: auto;
@@ -36,17 +42,16 @@
   position: relative;
 }
 
-
-
 #menuItems {
   margin: 0px;
   padding: 0px;
 }
 
 .menuItem, .lastItem  {
+  font-family: "custom";
   border: solid 1px black;
   background-color: rgb(169, 214, 196);
-  font-size: 28px;
+  font-size: 18px;
   list-style: none;
   text-align: center;
   border-radius: 6px;
@@ -65,6 +70,8 @@
 }
 
 #title {
+  font-family: "custom";
+  font-size: 25px;
   padding: 0px;
   margin: 0px;
   text-align: center;

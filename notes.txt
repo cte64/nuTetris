@@ -1,2 +1,8 @@
 - select a font that works with different browsers
-- add hover sounds and click sounds and sounds for gameplay
+- make the color slider the same width as the buttons
+- change the font and put the font in the folder so it works on every browsers
+- make it possible for sounds to overlap
+- get key repeat to work
+- change the color scheme
+- add a hover animation and hover sound
+- add a guide for aligning the block
