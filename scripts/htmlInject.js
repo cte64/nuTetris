@@ -15,7 +15,7 @@ var tetrisPlayItems =
 
 var tetrisPausedItems =
 "<li class='menuItem' id='pausedMenu' onclick='tetris.unPause();'> Play: </li>" +
-"<li class='menuItem' id='goBack' onclick='tetris.goBack();'> Back To Main Menu </li>";
+"<li class='menuItem' id='goBack' onclick='tetris.goBack();'> Main Menu: </li>";
 
 var tetrisSideBar =
 "<ul id='menuItems'>" +
@@ -56,7 +56,7 @@ var createPieceInject =
           "<li class='gridControlButton' onclick='createPieces.resetPiece();'> Reset Piece  </li>" +
           "<li class='inputForm'>" +
             "<form>" +
-              "<label> Color </label> <br>" +
+              "<label id='colorLabel'> Color </label> <br>" +
               "<input id='colorPicker' type='range' min='1' max='255' value='0' oninput='createPieces.colorChange(this.value)'> " +
             "</form>" +
           "</li>" +
