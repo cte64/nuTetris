@@ -23,12 +23,6 @@ var tetris = {
   height: 10,
   cName: "tetrisCanvas",
 
-  pause: function() {
-    document.getElementById('menu').innerHTML = menuSideBar;
-    mainMenu.update("sizeSelect");
-    createPieces.pieces = [];
-  },
-
   init: function(width, height) {
 
     //update the page
@@ -82,7 +76,9 @@ var tetris = {
     this.createBlock();
     this.gameState = "play";
 
+    //set the event listeners
     setEventHandler.setKeyHandler( function(e) { tetris.moveBlock(e.key); } );
+    setEventHandler.setTimerHandler(700, function() {tetris.moveBlock("ArrowDown");})
   },
 
   clearPieces: function() {
@@ -169,24 +165,36 @@ var tetris = {
     }
 },
 
+  goBack: function() {
+    this.unPause();
+    setEventHandler.setTimerHandler(0, null);
+    document.getElementById('menu').innerHTML = menuSideBar;
+    mainMenu.update("sizeSelect");
+    createPieces.pieces = [];
+  },
+
+  pause: function() {
+    this.gameState = "paused";
+    var newH = "<div id='pausedOverlay'> </div>";
+    document.getElementById("tableContainer").innerHTML += newH;
+    document.getElementById('menuItems').innerHTML = tetrisPausedItems;
+  },
+
+  unPause: function() {
+    this.gameState = "play";
+    var overlay = document.getElementById('pausedOverlay');
+    if(overlay != null) document.getElementById("tableContainer").removeChild(overlay);
+    document.getElementById('menuItems').innerHTML = tetrisPlayItems;
+    var goBack = document.getElementById('goBack');
+    if(goBack != null) document.getElementById('menuItems').removeChild(goBack);
+  },
+
   moveBlock: function(moveTo) {
 
     //PAUSE ========================
     if(moveTo == "Escape") {
-      if(this.gameState == "paused") {
-        this.gameState = "play";
-
-        //remove the overlay
-        var overlay = document.getElementById('pausedOverlay');
-        if(overlay != null) document.getElementById("tableContainer").removeChild(overlay);
-      }
-      else if (this.gameState == "play") {
-        this.gameState = "paused";
-
-        //add the overlay
-        var newH = "<div id='pausedOverlay'> </div>";
-        document.getElementById("tableContainer").innerHTML += newH;
-      }
+      if(this.gameState == "paused") this.unPause();
+      else if (this.gameState == "play") this.pause();
     }
 
     if(this.gameState != "play") {
@@ -224,6 +232,8 @@ var tetris = {
         for(var x = 0; x<3; x++)
           this.rotateMatrix();
       }
+
+      else { Sound.playSound("tick1"); }
     }
 
     //PUNCH DOWN ===================
@@ -247,7 +257,7 @@ var tetris = {
 
     //clear the board
     var canvas = document.getElementById(this.cName);
-    if (canvas.getContext) {
+    if (canvas != null && canvas.getContext) {
       var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
@@ -270,7 +280,7 @@ var tetris = {
 
     //draw the next piece
     var nP = document.getElementById('nextPiece');
-    if (nP.getContext) {
+    if (nP != null && nP.getContext) {
       var npCtx = nP.getContext('2d');
       npCtx.clearRect(0, 0, nP.width, nP.height);
     }
@@ -292,8 +302,13 @@ var tetris = {
 },
 
   createBlock: function() {
-    this.block.matrix = this.block.newMatrix;
+
     this.block.color = this.block.newColor;
+    for(var y = 0; y < BLOCKSIZE; y++) {
+      for(var x = 0; x < BLOCKSIZE; x++) {
+        this.block.matrix[y][x] = this.block.newMatrix[y][x];
+      }
+    }
 
     var index = Math.floor( Math.random() * createPieces.pieces.length);
     this.block.newMatrix = createPieces.pieces[index].grid;

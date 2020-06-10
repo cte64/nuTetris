@@ -1,13 +1,42 @@
 //General game variables
-const tileSize = 20;
+const tileSize = 18;
 const padding = 1;
 const sideBarWidth = 100;
 const BLOCKSIZE = 5;
-const maxXblocks = 30;
-const maxYblocks = 30;
+const maxXblocks = 32;
+const maxYblocks = 35;
 const gameBoxPadding = 10;
 var currentObj;
 
+
+var Sound = {
+
+  audio: {},
+  init: function() {
+
+    //load up the sound files ===========================
+    this.audio["tick1"] = new Audio("audio/oneShort.wav");
+    this.audio["tick2"] = new Audio("audio/two.mp3");
+    this.audio["tick3"] = new Audio("audio/three.mp3");
+    this.audio["tick4"] = new Audio("audio/four.mp3");
+  },
+
+  playSound: function(file) {
+    var audio = this.audio[file];
+    if(audio == null)
+      console.log('Sound File "' + file + '" does not exist.');
+    else
+      audio.play();
+  },
+
+  pauseSound: function(file) {
+    var audio = this.audio[file];
+    if(audio == null)
+      console.log('Sound File "' + file + '" does not exist.');
+    else
+      audio.pause();
+  }
+};
 
 function drawSquare2(x, y, width, height, cName, c) {
   var canvas = document.getElementById(cName);
@@ -20,7 +49,6 @@ function drawSquare2(x, y, width, height, cName, c) {
     ctx.fillRect(x, y, width, height);
   }
 }
-
 
 function relativeCoords(name, e) {
   var canvas = document.getElementById(name);
@@ -46,6 +74,12 @@ var setEventHandler = {
 
   clickHandler: null,
   keyUpHandler: null,
+  timerHandler: null,
+
+  setTimerHandler: function(newTime, newHandler) {
+    window.clearInterval(this.timerHandler);
+    if(newHandler != null) this.timerHandler = window.setInterval(newHandler, newTime);
+  },
 
   setClickHandler: function(newHandler) {
     window.removeEventListener('click', this.clickHandler);

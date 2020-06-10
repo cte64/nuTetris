@@ -3,20 +3,18 @@ var mainMenu = {
 
   state: "",
   init: function() {
+    Sound.init();
     var menu = document.getElementById('menu');
     if(menu != null) menu.innerHTML = menuSideBar;
-    this.update("sizeSelect");
-
-
-
-
+    selectSize.init();
   },
-
-  playable: false,
 
   update: function(button) {
 
     state = button;
+
+    Sound.pauseSound("tick1");
+    Sound.playSound("tick1");
 
     if(state == "sizeSelect") selectSize.init();
     if(state == "createPieces") createPieces.init();
@@ -34,8 +32,7 @@ var mainMenu = {
   }
 };
 
-function initGame() {
-    mainMenu.init(10, 10);
-}
 
-window.onload = initGame;
+window.onload = function() {
+    mainMenu.init(10, 10);
+};

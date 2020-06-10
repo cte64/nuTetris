@@ -9,12 +9,22 @@ var slideShowMiddle =
 "<canvas id='slideShow'> </canvas>" +
 "<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>";
 
+
+var tetrisPlayItems =
+"<li class='menuItem' id='pausedMenu' onclick='tetris.pause();'> Pause: </li>";
+
+var tetrisPausedItems =
+"<li class='menuItem' id='pausedMenu' onclick='tetris.unPause();'> Play: </li>" +
+"<li class='menuItem' id='goBack' onclick='tetris.goBack();'> Back To Main Menu </li>";
+
 var tetrisSideBar =
-"<ul id='menuItems'> <li class='menuItem' id='pausedMenu' onclick='tetris.pause();'> Paused </li> </ul>" +
-"<p id='nextPieceLabel'> Next Piece: </p>" +
-"<canvas id='nextPiece'> </canvas>" +
-"<p id='score'> Score: </p>" +
-"<p id='Speed:'> Speed: </p>";
+"<ul id='menuItems'>" +
+  tetrisPlayItems +
+"</ul>" +
+"<p id='nextPieceLabel' class='tetrisTitles'> Next Piece: </p>" +
+"<canvas id='nextPiece' class='tetrisTitles'> </canvas>" +
+"<p id='score' class='tetrisTitles'> Score: </p>" +
+"<p id='Speed:' class='tetrisTitles'> Speed: </p>";
 
 var menuSideBar =
 "<ul id='menuItems'>" +
@@ -47,13 +57,7 @@ var createPieceInject =
           "<li class='inputForm'>" +
             "<form>" +
               "<label> Color </label> <br>" +
-              "<input id='colorPicker' type='range' min='1' max='255' value='0' onchange='createPieces.colorChange(this.value)'> " +
-            "</form>" +
-          "</li>" +
-          "<li class='inputForm'>" +
-            "<form>" +
-              "<label> % Chance </label> <br>" +
-              "<input type='text' id='spawnChanceInput' class='formBox' spellcheck='false'>" +
+              "<input id='colorPicker' type='range' min='1' max='255' value='0' oninput='createPieces.colorChange(this.value)'> " +
             "</form>" +
           "</li>" +
         "<ul>" +
@@ -63,7 +67,6 @@ var createPieceInject =
 "</div>";
 
 var inGameOptionsInject = "";
-
 
 var tetrisInject =
 "<h1 id='title'> SandBox Tetris </h1>" +
