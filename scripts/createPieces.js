@@ -149,8 +149,9 @@ var createPieces = {
   resetPiece: function() {
     for(var y = 0; y < BLOCKSIZE; y++) {
       for(var x = 0; x < BLOCKSIZE; x++) {
-        if(y > 0 && y < 4) this.grid[y][x] = "#bb0000";
-        else this.grid[y][x] = 0;
+        //if(y > 0 && y < 4) this.grid[y][x] = "#bb0000";
+        //else this.grid[y][x] = 0;
+        this.grid[y][x] = 0;
       }
     }
 
