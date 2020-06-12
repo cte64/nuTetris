@@ -4,6 +4,21 @@
 one
 */
 
+/*
+//check if player has lost the game
+for(var x = 1; x < this.width - 1; x++) {
+  if(this.board[1][x] != 0) {
+    if(this.gameState == "play") {
+      this.gameState = "gameOver";
+      document.getElementById("gameBoard").innerHTML += gameOverHTML;
+    }
+  }
+}
+*/
+
+
+
+
 var tetris = {
 
   block: {
@@ -14,7 +29,8 @@ var tetris = {
     matrix: [],
     newMatrix: [],
     virtualX: 0,
-    virtualY: 0
+    virtualY: 0,
+    action: null
   },
 
   board: [],
@@ -89,35 +105,30 @@ var tetris = {
 
   deleteAndShift: function() {
 
-    //check if player has lost the game
-    for(var x = 1; x < this.width - 1; x++) {
-      if(this.board[1][x] != 0) {
-        if(this.gameState == "play") {
-          this.gameState = "gameOver";
-          document.getElementById("gameBoard").innerHTML += gameOverHTML;
-        }
-      }
-    }
+
+    this.block.action.init();
+    /*
 
     for(var z = this.height - 2; z != 0; z--) {
       while(true) {
         var flag = true;
-        for(var x = 1; x < this.height - 1; x++) {
+        for(var x = 1; x < this.width - 1; x++) {
           if( this.board[z][x] == 0)
             flag = false;
         }
-
         if(flag) {
-          this.score += 100;
           for(var x = 1; x < this.width - 1; x++) {
-            for(var y = z; y != 0; y--) { this.board[y][x] = (y > 1) ? this.board[y - 1][x] : 0; }
+            for(var y = z; y != 0; y--) {
+              this.board[y][x] = (y > 1) ? this.board[y - 1][x] : 0;
+            }
           }
         }
-
         else break;
       }
     }
-},
+    */
+
+  },
 
   copyBlockToBoard: function() {
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
@@ -199,10 +210,7 @@ var tetris = {
       else if (this.gameState == "play") this.pause();
     }
 
-    if(this.gameState != "play") {
-      this.drawBoard();
-      return;
-    }
+    if(this.gameState != "play") { return; }
 
     //LEFT =========================
     if(moveTo == "ArrowLeft") {
@@ -296,7 +304,7 @@ var tetris = {
       }
     }
 
-    
+
 
     //if the game is paused, make a semi-transparent overlay
 
@@ -308,6 +316,8 @@ var tetris = {
   createBlock: function() {
 
     this.block.color = this.block.newColor;
+    this.block.action = new LineAnimation();
+
     for(var y = 0; y < BLOCKSIZE; y++) {
       for(var x = 0; x < BLOCKSIZE; x++) {
         this.block.matrix[y][x] = this.block.newMatrix[y][x];
