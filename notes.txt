@@ -1,8 +1,13 @@
 - select a font that works with different browsers
-- make the color slider the same width as the buttons
-- change the font and put the font in the folder so it works on every browsers
+- use a color pallette selector instead of a slider
 - make it possible for sounds to overlap
-- get key repeat to work
 - change the color scheme
 - add a hover animation and hover sound
 - add a guide for aligning the block
+- get speed label to work
+- get score label to work
+- vertically center the gameBox
+- use a pic background for the buttons
+- add a background image for the page
+- add a background image for the title
+- fix the start page thing

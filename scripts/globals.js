@@ -103,8 +103,8 @@ var setEventHandler = {
   },
 
   setKeyHandler: function(newHandler) {
-    window.removeEventListener('keyup', this.keyUpHandler);
-    window.addEventListener('keyup', newHandler);
+    window.removeEventListener('keydown', this.keyUpHandler);
+    window.addEventListener('keydown', newHandler);
     this.keyUpHandler = newHandler;
   }
 }
