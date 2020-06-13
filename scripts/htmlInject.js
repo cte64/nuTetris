@@ -5,6 +5,26 @@ var selectSizeInject =
   "<canvas id='sizeSelectCanvas'></canvas>" +
 "</div>";
 
+var tableInject =
+"<div id='tableContainer'>" +
+  "<div class='tableRow'>" +
+    "<div id='menu'>" +
+    "</div>" +
+    "<div id='gameBox'>" +
+    "</div>" +
+  "</div>" +
+"</div>";
+
+var selectGameModeInject =
+"<div id='selectGameMode'>" +
+  "<h1 id='title'> SandBox Tetris </h1>" +
+  "<ul class='menuItems' id='selectGameModeMenu'>" +
+    "<li class='menuItem' id='classicMode' onclick='selectGameMode.classicMode();'> Classic Mode </li>" +
+    "<li class='menuItem' id='progressiveMode' onclick='selectGameMode.progressiveMode();'> Progressive Mode </li>" +
+    "<li class='menuItem' id='sandBoxMode' onclick='selectGameMode.sandBoxMode();'> SandBox Mode </li>" +
+  "</ul>" +
+"</div>";
+
 var slideShowMiddle =
 "<canvas id='slideShow'> </canvas>" +
 "<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>";
@@ -26,8 +46,20 @@ var tetrisSideBar =
 "<p id='score' class='tetrisTitles'> Score: </p>" +
 "<p id='Speed:' class='tetrisTitles'> Speed: </p>";
 
-var menuSideBar =
+var no = "mainMenu.update('play')";
+var menuSideBarClassic =
 "<ul id='menuItems'>" +
+  "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
+  "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
+  "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
+  "<li class='menuItem' id='play' onclick=" + no + "> Play </li>" +
+  "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
+"</ul>";
+
+
+var menuSideBarSandBox =
+"<ul id='menuItems'>" +
+  "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
   "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
   "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
   "<li class='menuItem' id='createPieces' onclick='mainMenu.update(this.id);'> Create Custom <br> Pieces </li>" +

@@ -1,6 +1,6 @@
 //General game variables
 const tileSize = 18;
-const padding = 1;
+const padding = 0;
 const sideBarWidth = 100;
 const BLOCKSIZE = 5;
 const maxXblocks = 32;
@@ -38,6 +38,17 @@ var Sound = {
   }
 };
 
+var Images = {
+
+
+  img: null,
+
+  init: function() {
+    this.img = new Image();
+    this.img.src = "images/overlay2.png";
+  }
+};
+
 function drawSquare2(x, y, width, height, cName, c) {
   var canvas = document.getElementById(cName);
   if(canvas == null) return;
@@ -47,6 +58,10 @@ function drawSquare2(x, y, width, height, cName, c) {
     ctx.strokeStyle = c;
     ctx.fillStyle = c;
     ctx.fillRect(x, y, width, height);
+
+    ctx.globalAlpha = 0.35;
+    ctx.drawImage(Images.img, x, y, tileSize, tileSize);
+    ctx.globalAlpha = 1.0;
   }
 }
 

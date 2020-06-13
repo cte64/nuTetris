@@ -40,6 +40,8 @@ var tetris = {
   width: 10,
   height: 10,
   cName: "tetrisCanvas",
+  delay: 500,
+
 
   init: function(width, height) {
 
@@ -96,7 +98,7 @@ var tetris = {
 
     //set the event listeners
     setEventHandler.setKeyHandler( function(e) { tetris.moveBlock(e.key); } );
-    setEventHandler.setTimerHandler(700, function() {tetris.moveBlock("ArrowDown");})
+    setEventHandler.setTimerHandler(this.delay, function() {tetris.moveBlock("ArrowDown");})
   },
 
   clearPieces: function() {

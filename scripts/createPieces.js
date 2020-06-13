@@ -109,10 +109,15 @@ var createPieces = {
     }
   },
 
-  addPiece: function() {
+  createPiece: function() {
     var obj = new this.Piece(this);
     this.pieces.push(obj);
     this.scrollIndex = this.pieces.length - 1;
+  },
+
+  addPiece: function() {
+
+    this.createPiece();
 
     //make the play option available
     var play = document.getElementById('play');
@@ -169,6 +174,67 @@ var createPieces = {
     if(direction == 1) this.scrollIndex++;
     this.scrollIndex = clamp(this.scrollIndex, 0, this.pieces.length - 1);
     this.drawSlideShow();
+  },
+
+  classicMode: function() {
+    this.pieces = [];
+
+
+    this.color = '#fc2b3a';
+    this.grid = [[0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0],
+                 [0, 0, 1, 1, 0],
+                 [0, 0, 1, 1, 0],
+                 [0, 0, 0, 0, 0]];
+    this.createPiece();
+
+    this.color = '#37d3de';
+    this.grid = [[0, 0, 0, 0, 0],
+                 [0, 0, 1, 0, 0],
+                 [0, 0, 1, 0, 0],
+                 [0, 0, 1, 0, 0],
+                 [0, 0, 1, 0, 0]];
+    this.createPiece();
+
+    this.color = '#2780c4';
+    this.grid = [[0, 0, 0, 0, 0],
+                 [0, 1, 0, 0, 0],
+                 [0, 1, 1, 1, 0],
+                 [0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0]];
+    this.createPiece();
+
+    this.color = '#20b052';
+    this.grid = [[0, 0, 0, 0, 0],
+                 [0, 0, 0, 1, 0],
+                 [0, 1, 1, 1, 0],
+                 [0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0]];
+    this.createPiece();
+
+    this.color = '#fafa50';
+    this.grid = [[0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0],
+                 [0, 0, 1, 0, 0],
+                 [0, 1, 1, 1, 0],
+                 [0, 0, 0, 0, 0]];
+    this.createPiece();
+
+    this.color = '#f29616';
+    this.grid = [[0, 0, 0, 0, 0],
+                 [0, 0, 0, 1, 0],
+                 [0, 0, 1, 1, 0],
+                 [0, 0, 1, 0, 0],
+                 [0, 0, 0, 0, 0]];
+    this.createPiece();
+
+    this.color = '#d630e6';
+    this.grid = [[0, 0, 0, 0, 0],
+                 [0, 1, 0, 0, 0],
+                 [0, 1, 1, 0, 0],
+                 [0, 0, 1, 0, 0],
+                 [0, 0, 0, 0, 0]];
+    this.createPiece();
   }
 
 };

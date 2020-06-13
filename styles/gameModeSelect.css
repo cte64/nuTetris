@@ -1,0 +1,14 @@
+
+#selectGameMode {
+  background-color: rgb(191, 191, 191);
+  text-align: center;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#classicMode, #progressiveMode, #sandBoxMode {
+  width: 300px;
+  margin: 0px auto 0px auto;
+}
