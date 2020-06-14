@@ -3,8 +3,6 @@
 - make it possible for sounds to overlap
 - change the color scheme
 - add a hover animation and hover sound
-- add a guide for aligning the block
-- get speed label to work
 - get score label to work
 - vertically center the gameBox
 - use a pic background for the buttons

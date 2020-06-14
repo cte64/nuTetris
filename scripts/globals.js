@@ -15,26 +15,19 @@ var Sound = {
   init: function() {
 
     //load up the sound files ===========================
-    this.audio["tick1"] = new Audio("audio/oneShort.wav");
-    this.audio["tick2"] = new Audio("audio/two.mp3");
-    this.audio["tick3"] = new Audio("audio/three.mp3");
-    this.audio["tick4"] = new Audio("audio/four.mp3");
+    this.audio["one"] = new Audio("audio/one.wav");
   },
 
-  playSound: function(file) {
+  play: function(file) {
     var audio = this.audio[file];
-    if(audio == null)
+    if(audio == null) {
       console.log('Sound File "' + file + '" does not exist.');
-    else
-      audio.play();
-  },
-
-  pauseSound: function(file) {
-    var audio = this.audio[file];
-    if(audio == null)
-      console.log('Sound File "' + file + '" does not exist.');
-    else
+    }
+    else {
       audio.pause();
+      audio.currentTime = 0;
+      audio.play();
+    }
   }
 };
 
@@ -61,6 +54,20 @@ function drawSquare2(x, y, width, height, cName, c) {
 
     ctx.globalAlpha = 0.35;
     ctx.drawImage(Images.img, x, y, tileSize, tileSize);
+    ctx.globalAlpha = 1.0;
+  }
+}
+
+function drawSquare3(x, y, width, height, cName, c) {
+  var canvas = document.getElementById(cName);
+  if(canvas == null) return;
+
+  if (canvas.getContext) {
+    var ctx = canvas.getContext("2d");
+    ctx.globalAlpha = 0.35;
+    ctx.strokeStyle = c;
+    ctx.fillStyle = c;
+    ctx.fillRect(x, y, width, height);
     ctx.globalAlpha = 1.0;
   }
 }
