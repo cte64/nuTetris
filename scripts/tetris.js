@@ -1,24 +1,5 @@
 
 
-/*
-one
-*/
-
-/*
-//check if player has lost the game
-for(var x = 1; x < this.width - 1; x++) {
-  if(this.board[1][x] != 0) {
-    if(this.gameState == "play") {
-      this.gameState = "gameOver";
-      document.getElementById("gameBoard").innerHTML += gameOverHTML;
-    }
-  }
-}
-*/
-
-
-
-
 var tetris = {
 
   block: {
@@ -30,7 +11,8 @@ var tetris = {
     newMatrix: [],
     virtualX: 0,
     virtualY: 0,
-    action: null
+    action: null,
+    guideY: 0,
   },
 
   board: [],
@@ -40,8 +22,7 @@ var tetris = {
   width: 10,
   height: 10,
   cName: "tetrisCanvas",
-  delay: 500,
-
+  delay: 550,
 
   init: function(width, height) {
 
@@ -105,33 +86,6 @@ var tetris = {
     this.pieces.clear();
   },
 
-  deleteAndShift: function() {
-
-
-    this.block.action.init();
-    /*
-
-    for(var z = this.height - 2; z != 0; z--) {
-      while(true) {
-        var flag = true;
-        for(var x = 1; x < this.width - 1; x++) {
-          if( this.board[z][x] == 0)
-            flag = false;
-        }
-        if(flag) {
-          for(var x = 1; x < this.width - 1; x++) {
-            for(var y = z; y != 0; y--) {
-              this.board[y][x] = (y > 1) ? this.board[y - 1][x] : 0;
-            }
-          }
-        }
-        else break;
-      }
-    }
-    */
-
-  },
-
   copyBlockToBoard: function() {
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
       for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
@@ -141,14 +95,14 @@ var tetris = {
     }
   },
 
-  overLap: function() {
-    for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
-      for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
+  overLap: function(blockX, blockY) {
+    for(var y = blockY; y < blockY + BLOCKSIZE; y++) {
+      for(var x = blockX; x < blockX + BLOCKSIZE; x++) {
 
           var yInd = clamp(y, 0, this.board.length - 1);
           var xInd = clamp(x, 0, this.board[0].length - 1);
 
-          if( this.board[yInd][xInd] != 0 &&this.block.matrix[yInd - this.block.yPos][xInd - this.block.xPos] != 0)
+          if( this.board[yInd][xInd] != 0 &&this.block.matrix[yInd - blockY][xInd - blockX] != 0)
               return true;
         }
       }
@@ -204,6 +158,26 @@ var tetris = {
     if(goBack != null) document.getElementById('menuItems').removeChild(goBack);
   },
 
+  updateGuide: function() {
+
+
+    //this updates the xPos and yPos of the guide piece. It does not actually draw it
+    var newGuideY = this.block.yPos;
+
+    while(true) {
+      newGuideY++;
+      if(this.overLap(this.block.xPos, newGuideY)) {
+        newGuideY--;
+        break;
+      }
+    }
+
+    this.block.guideY = newGuideY - 1;
+
+
+
+  },
+
   moveBlock: function(moveTo) {
 
     //PAUSE ========================
@@ -217,22 +191,22 @@ var tetris = {
     //LEFT =========================
     if(moveTo == "ArrowLeft") {
         this.block.xPos--;
-        if( this.overLap() ) this.block.xPos++;
+        if( this.overLap(this.block.xPos, this.block.yPos) ) this.block.xPos++;
     }
 
     //RIGHT ========================
     if(moveTo == "ArrowRight") {
         this.block.xPos++;
-        if( this.overLap() ) this.block.xPos--;
+        if( this.overLap(this.block.xPos, this.block.yPos) ) this.block.xPos--;
     }
 
     //DOWN =========================
     if(moveTo == "ArrowDown") {
         this.block.yPos++;
-        if( this.overLap() ) {
+        if( this.overLap(this.block.xPos, this.block.yPos) ) {
             this.block.yPos--;
             this.copyBlockToBoard();
-            this.deleteAndShift();
+            this.block.action.init();
             this.createBlock();
         }
     }
@@ -240,28 +214,30 @@ var tetris = {
     //ROTATE =======================
     if(moveTo == "ArrowUp") {
       this.rotateMatrix();
-      if( this.overLap() ) {
+      if( this.overLap(this.block.xPos, this.block.yPos) ) {
         for(var x = 0; x<3; x++)
           this.rotateMatrix();
       }
 
-      else { Sound.playSound("tick1"); }
+      Sound.play("one");
     }
 
     //PUNCH DOWN ===================
     if(moveTo == " ") {
       while(true) {
         this.block.yPos++;
-        if( this.overLap() ) {
+        if( this.overLap(this.block.xPos, this.block.yPos) ) {
           this.block.yPos--;
           this.copyBlockToBoard();
-          this.deleteAndShift();
+          this.block.action.init();
           this.createBlock();
           break;
         }
       }
+
     }
 
+    this.updateGuide();
     this.drawBoard();
   },
 
@@ -306,13 +282,20 @@ var tetris = {
       }
     }
 
+    //draw the guide piece
+    for(var y = 0; y < BLOCKSIZE; y++) {
+      for(var x = 0; x  < BLOCKSIZE; x++) {
+        var c = this.block.matrix[y][x];
+        var xC = (x + this.block.xPos - 1)*(tileSize + padding);
+        var yC = (y + this.block.guideY)*(tileSize + padding);
+        if(c != ' ') drawSquare3(xC, yC, tileSize, tileSize, this.cName, 'rgba(255, 255, 255, 50)');
+      }
+    }
 
-
-    //if the game is paused, make a semi-transparent overlay
-
-
-
-
+    //update the speed
+    var speed = document.getElementById('speed');
+    var hz = 1000.0 / this.delay;
+    speed.innerHTML = "Speed: " + hz.toFixed(1) + " Hz";
 },
 
   createBlock: function() {
@@ -333,5 +316,4 @@ var tetris = {
     this.block.xPos = Math.floor(this.width/2 - BLOCKSIZE/2 - 1);
     this.block.yPos = 0;
   }
-
 };

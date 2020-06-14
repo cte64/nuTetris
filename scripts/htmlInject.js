@@ -29,7 +29,6 @@ var slideShowMiddle =
 "<canvas id='slideShow'> </canvas>" +
 "<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>";
 
-
 var tetrisPlayItems =
 "<li class='menuItem' id='pausedMenu' onclick='tetris.pause();'> Pause: </li>";
 
@@ -44,7 +43,7 @@ var tetrisSideBar =
 "<p id='nextPieceLabel' class='tetrisTitles'> Next Piece: </p>" +
 "<canvas id='nextPiece' class='tetrisTitles'> </canvas>" +
 "<p id='score' class='tetrisTitles'> Score: </p>" +
-"<p id='Speed:' class='tetrisTitles'> Speed: </p>";
+"<p id='speed' class='tetrisTitles'> Speed: </p>";
 
 var no = "mainMenu.update('play')";
 var menuSideBarClassic =
@@ -55,7 +54,6 @@ var menuSideBarClassic =
   "<li class='menuItem' id='play' onclick=" + no + "> Play </li>" +
   "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
 "</ul>";
-
 
 var menuSideBarSandBox =
 "<ul id='menuItems'>" +
