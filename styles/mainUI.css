@@ -14,6 +14,8 @@
   display: table-row;
 }
 
+
+
 #menu {
   display: table-cell;
   padding: 0px;
@@ -48,25 +50,6 @@
   margin: 0px;
   padding: 0px;
 }
-
-
-
-/*
-.menuItem, .lastItem  {
-  font-family: "custom";
-  border: solid 1px black;
-  background-color: rgb(169, 214, 196);
-  font-size: 18px;
-  list-style: none;
-  text-align: center;
-  border-radius: 6px;
-  padding: 15px;
-  width: 190px;
-  height: 50px;
-  z-index: 5;
-  position: relative;
-}
-*/
 
 .menuItem, .lastItem  {
   margin: 2px;

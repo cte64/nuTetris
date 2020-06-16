@@ -16,14 +16,20 @@ var tableInject =
 "</div>";
 
 var selectGameModeInject =
-"<div id='selectGameMode'>" +
-  "<h1 id='title'> SandBox Tetris </h1>" +
-  "<ul class='menuItems' id='selectGameModeMenu'>" +
-    "<li class='menuItem' id='classicMode' onclick='selectGameMode.classicMode();'> Classic Mode </li>" +
-    "<li class='menuItem' id='progressiveMode' onclick='selectGameMode.progressiveMode();'> Progressive Mode </li>" +
-    "<li class='menuItem' id='sandBoxMode' onclick='selectGameMode.sandBoxMode();'> SandBox Mode </li>" +
-  "</ul>" +
+"<div id='tableContainer'>" +
+  "<div class='tableRow'>" +
+    "<div id='menu'>" +
+
+
+      "<p > Select </p>" +
+      "<ul id='menuItems'>" +
+        "<li class='menuItem' id='classicMode' onclick='mainMenu.update(this.id);'> Classic </li>" +
+        "<li class='menuItem' id='sandBoxMode' onclick='mainMenu.update(this.id);'> SandBox </li>" +
+      "</ul>";
+    "</div>" +
+  "</div>" +
 "</div>";
+
 
 var slideShowMiddle =
 "<canvas id='slideShow'> </canvas>" +

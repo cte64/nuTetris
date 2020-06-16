@@ -179,7 +179,6 @@ var createPieces = {
   classicMode: function() {
     this.pieces = [];
 
-
     this.color = '#fc2b3a';
     this.grid = [[0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0],
