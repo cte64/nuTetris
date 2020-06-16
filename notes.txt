@@ -9,3 +9,12 @@
 - add a background image for the page
 - add a background image for the title
 - fix the start page thing
+- do font again
+- fix the main screen
+- make all links work
+
+
+
+=====IN GAME OPTIONS=================
+- volume
+- guide (on/off)

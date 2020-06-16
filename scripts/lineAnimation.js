@@ -14,6 +14,9 @@ function LineAnimation() {
 
     if(this.state > this.maxFrames) {
       this.block = false;
+
+      //play the sound
+      Sound.play("clearRow");
       this.shift();
       this.check();
     }

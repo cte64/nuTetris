@@ -15,7 +15,10 @@ var Sound = {
   init: function() {
 
     //load up the sound files ===========================
-    this.audio["one"] = new Audio("audio/one.wav");
+    this.audio["two"] = new Audio("audio/two.wav");
+    this.audio["menuFX"] = new Audio("audio/menuFX.wav");
+    this.audio["hitTheFloor"] = new Audio("audio/hitTheFloor.wav");
+    this.audio["clearRow"] = new Audio("audio/clearRow.wav");
   },
 
   play: function(file) {

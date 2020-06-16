@@ -192,6 +192,7 @@ var tetris = {
     if(moveTo == "ArrowLeft") {
         this.block.xPos--;
         if( this.overLap(this.block.xPos, this.block.yPos) ) this.block.xPos++;
+
     }
 
     //RIGHT ========================
@@ -218,8 +219,6 @@ var tetris = {
         for(var x = 0; x<3; x++)
           this.rotateMatrix();
       }
-
-      Sound.play("one");
     }
 
     //PUNCH DOWN ===================
@@ -234,7 +233,7 @@ var tetris = {
           break;
         }
       }
-
+      Sound.play("hitTheFloor");
     }
 
     this.updateGuide();

@@ -10,6 +10,9 @@ var mainMenu = {
 
   update: function(button) {
 
+    //play the Sound
+    Sound.play("menuFX");
+
     state = button;
     if(state == "goBackToGameModeSelect") selectGameMode.init();
     if(state == "selectGameMode") selectGameMode.init();
