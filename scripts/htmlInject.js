@@ -19,17 +19,14 @@ var selectGameModeInject =
 "<div id='tableContainer'>" +
   "<div class='tableRow'>" +
     "<div id='menu'>" +
-
-
       "<p > Select </p>" +
       "<ul id='menuItems'>" +
-        "<li class='menuItem' id='classicMode' onclick='mainMenu.update(this.id);'> Classic </li>" +
-        "<li class='menuItem' id='sandBoxMode' onclick='mainMenu.update(this.id);'> SandBox </li>" +
+        "<li class='menuItem' id='classicMode' onclick='selectGameMode.classicMode();'> Classic </li>" +
+        "<li class='menuItem' id='sandBoxMode' onclick='selectGameMode.sandBoxMode();'> SandBox </li>" +
       "</ul>";
     "</div>" +
   "</div>" +
 "</div>";
-
 
 var slideShowMiddle =
 "<canvas id='slideShow'> </canvas>" +
