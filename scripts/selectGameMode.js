@@ -3,42 +3,22 @@
 var selectGameMode = {
 
 
-  makeTable: function() {
-    var body = document.getElementById('body');
-    body.innerHTML = tableInject;
-  },
-
   classicMode: function() {
-    this.makeTable();
-
-    var menu = document.getElementById('menu');
-    if(menu != null) menu.innerHTML = menuSideBarClassic;
-
-    var gameBox = document.getElementById('gameBox');
+    var tableRow = document.getElementById('tableRow');
+    if(tableRow != null) tableRow.innerHTML = classicInject;
     selectSize.init();
-
-    var title = document.getElementById('title');
-    title.innerHTML = 'Classic Tetris';
-
+    mainMenu.gameMode = 'Classic';
     createPieces.classicMode();
   },
 
-  progressiveMode: function() {
-    console.log("prog");
-  },
-
   sandBoxMode: function() {
-    this.makeTable();
-
-    var menu = document.getElementById('menu');
-    if(menu != null) menu.innerHTML = menuSideBarSandBox;
-
-    var gameBox = document.getElementById('gameBox');
+    var tableRow = document.getElementById('tableRow');
+    if(tableRow != null) tableRow.innerHTML = sandBoxInject;
     selectSize.init();
   },
 
   init: function() {
-    var body = document.getElementById('body');
+    var body = document.getElementById('tableRow');
     body.innerHTML = selectGameModeInject;
   }
 };

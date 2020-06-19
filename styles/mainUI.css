@@ -10,13 +10,13 @@
   position: relative;
 }
 
-.tableRow {
+#tableRow {
   display: table-row;
 }
 
 
 
-#menu {
+.menuBar {
   display: table-cell;
   padding: 0px;
   margin: 0px;
@@ -57,8 +57,8 @@
   padding: 5px 12px;
   display: block;
   color: #9fa8b0;
-  font-weight: bold;
-  font-size: 25px;
+  font-family: "custom";
+  font-size: 26px;
   text-shadow: 1px 1px #1f272b;
   border: 1px solid #1c252b;
   border-radius: 3px;
@@ -71,7 +71,7 @@
   -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Firefox */
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Safari, Chrome */
   width: 190px;
-  height: 60px;
+  height: 70px;
   z-index: 5;
   position: relative;
 }
@@ -107,10 +107,10 @@
   height: 30px;
 }
 
-#title {
+.title {
   font-family: "custom";
-  font-size: 25px;
-  padding: 0px;
+  font-size: 30px;
+  padding: 10px;
   margin: 0px;
   text-align: center;
 }

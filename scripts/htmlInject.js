@@ -1,31 +1,17 @@
 
 var selectSizeInject =
-"<h1 id='title'> SandBox Tetris </h1>" +
+"<p class ='title id='title'> SandBox Tetris </p>" +
   "<div id='game'>" +
   "<canvas id='sizeSelectCanvas'></canvas>" +
 "</div>";
 
-var tableInject =
-"<div id='tableContainer'>" +
-  "<div class='tableRow'>" +
-    "<div id='menu'>" +
-    "</div>" +
-    "<div id='gameBox'>" +
-    "</div>" +
-  "</div>" +
-"</div>";
-
 var selectGameModeInject =
-"<div id='tableContainer'>" +
-  "<div class='tableRow'>" +
-    "<div id='menu'>" +
-      "<p > Select </p>" +
-      "<ul id='menuItems'>" +
-        "<li class='menuItem' id='classicMode' onclick='selectGameMode.classicMode();'> Classic </li>" +
-        "<li class='menuItem' id='sandBoxMode' onclick='selectGameMode.sandBoxMode();'> SandBox </li>" +
-      "</ul>";
-    "</div>" +
-  "</div>" +
+"<div class='menuBar' id='selectMenu'>" +
+  "<p class='title' id='title'> Select Game Mode </p>" +
+  "<ul id='menuItems'>" +
+    "<li class='menuItem' id='classicMode' onclick='selectGameMode.classicMode();'> Classic </li>" +
+    "<li class='menuItem' id='sandBoxMode' onclick='selectGameMode.sandBoxMode();'> SandBox </li>" +
+  "</ul>";
 "</div>";
 
 var slideShowMiddle =
@@ -48,27 +34,37 @@ var tetrisSideBar =
 "<p id='score' class='tetrisTitles'> Score: </p>" +
 "<p id='speed' class='tetrisTitles'> Speed: </p>";
 
-var no = "mainMenu.update('play')";
-var menuSideBarClassic =
-"<ul id='menuItems'>" +
-  "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
-  "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
-  "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
-  "<li class='menuItem' id='play' onclick=" + no + "> Play </li>" +
-  "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
-"</ul>";
 
-var menuSideBarSandBox =
-"<ul id='menuItems'>" +
-  "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
-  "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
-  "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
-  "<li class='menuItem' id='createPieces' onclick='mainMenu.update(this.id);'> Create Custom <br> Pieces </li>" +
-  "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
-"</ul>";
+var classicInject =
+"<div class='menuBar' id='menuBar'>" +
+  "<ul id='menuItems'>" +
+    "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
+    "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
+    "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
+    "<li class='menuItem' id='play' onclick=\"mainMenu.update('play');\"> Play </li>" +
+    "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
+  "</ul>" +
+"</div>" +
+
+"<div id='gameBox'>" +
+"</div>";
+
+var sandBoxInject =
+"<div class='menuBar'>" +
+  "<ul id='menuItems'>" +
+    "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
+    "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
+    "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
+    "<li class='menuItem' id='createPieces' onclick='mainMenu.update(this.id);'> Create Custom <br> Pieces </li>" +
+    "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
+  "</ul>" +
+"</div>" +
+
+"<div id='gameBox'>" +
+"</div>";
 
 var createPieceInject =
-"<h1 id='title'> SandBox Tetris </h1>" +
+"<p class='title' id='title'> SandBox Tetris </p>" +
 "<div id='game'>" +
 
   "<div id='scrollBar'>" +
@@ -102,7 +98,7 @@ var createPieceInject =
 var inGameOptionsInject = "";
 
 var tetrisInject =
-"<h1 id='title'> SandBox Tetris </h1>" +
+"<p class='title' id='title'>  </p>" +
 "<div id='game'>" +
   "<canvas id='tetrisCanvas'></canvas>" +
 "</div>";

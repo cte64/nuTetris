@@ -27,10 +27,13 @@ var tetris = {
   init: function(width, height) {
 
     //update the page
-    document.getElementById("gameBox").innerHTML = tetrisInject;
+    document.getElementById('gameBox').innerHTML = tetrisInject;
+
+    //set the title based on the gameMode
+    document.getElementById('title').innerHTML = mainMenu.gameMode + " Tetris";
 
     //set the sideBar
-    document.getElementById('menu').innerHTML = tetrisSideBar;
+    document.getElementById('menuBar').innerHTML = tetrisSideBar;
 
     this.width = width;
     this.height = height;

@@ -1,6 +1,7 @@
 
 var mainMenu = {
 
+  gameMode: "yee",
   state: "",
   init: function() {
     Sound.init();
@@ -9,6 +10,7 @@ var mainMenu = {
   },
 
   update: function(button) {
+
 
     //play the Sound
     Sound.play("menuFX");
@@ -36,4 +38,5 @@ var mainMenu = {
 
 window.onload = function() {
     mainMenu.init(10, 10);
+
 };
