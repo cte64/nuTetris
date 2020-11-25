@@ -24,6 +24,10 @@ var mainMenu = {
     if(state == "play") tetris.init(selectSize.width + 2, selectSize.height + 2);
     if(state == "about") about.init();
 
+
+
+
+    /*
     // change the color of the menu items ======================================================
     var list = document.getElementById("menuItems");
     if(list == null) return;
@@ -32,6 +36,7 @@ var mainMenu = {
       if(des[z].id == state) des[z].style.backgroundColor =  "rgb(116, 179, 157)";
       else des[z].style.backgroundColor = "rgb(169, 214, 196)";
     }
+    */
   }
 };
 

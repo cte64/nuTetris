@@ -1,20 +1,8 @@
-- select a font that works with different browsers
-- use a color pallette selector instead of a slider
-- make it possible for sounds to overlap
-- change the color scheme
-- add a hover animation and hover sound
-- get score label to work
-- vertically center the gameBox
-- use a pic background for the buttons
-- add a background image for the page
-- add a background image for the title
-- fix the start page thing
-- do font again
-- fix the main screen
-- make all links work
 
 
 
-=====IN GAME OPTIONS=================
-- volume
-- guide (on/off)
+- center the main menu vertically
+- when you go back to main menu, it changes the cs back to the original one
+- make it play the sound for every menu button click
+- after you hit play, the left-hand bar gets shorter for some reason
+- update the "score" field so that the score is the number of blocks deleted
