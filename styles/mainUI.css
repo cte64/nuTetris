@@ -11,7 +11,7 @@
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
 }
 
 #tableRow {
@@ -27,15 +27,17 @@
   border: 1px solid black;
   border-radius: 6px 0px 0px 6px;
   width: 200px;
+  height: 676px;
   position: relative;
   background-color: rgb(191, 191, 191);
   text-align: center;
 }
 
 #gameBox {
+
   display: table-cell;
-  width: 600px;
-  height: 600px;
+  width: 560px;
+  height: 676px;
   border: solid 1px black;
   border-radius: 0px 6px 6px 0px;
 }
@@ -43,11 +45,11 @@
 #game {
   background-color: grey;
   width: 100%;
-  height: 100%;
+  height: 622px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  position: relative;
+
 }
 
 #menuItems {
@@ -83,8 +85,6 @@
   background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4C5A64', endColorstr='#2E3940',GradientType=0 ); /* ie */
 }
-
-
 
 
 

@@ -77,6 +77,8 @@ var selectSize = {
       ctx.canvas.height = yPix;
     }
 
+
+    /*
     //resize the divs
     var gameBox = document.getElementById("gameBox");
     var game = document.getElementById("game");
@@ -84,6 +86,7 @@ var selectSize = {
     game.style.height = (yPix + 2*gameBoxPadding) + "px";
     gameBox.style.width = (xPix + 2*gameBoxPadding) + "px";
     gameBox.style.height = (yPix + 2*gameBoxPadding) + "px";
+    */
 
     setEventHandler.setClickHandler( function(e) { selectSize.update(e); } );
     this.update(null);

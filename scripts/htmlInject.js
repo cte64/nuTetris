@@ -40,7 +40,6 @@ var classicInject =
   "<ul id='menuItems'>" +
     "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
     "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
-    "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
     "<li class='menuItem' id='play' onclick=\"mainMenu.update('play');\"> Play </li>" +
     "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
   "</ul>" +
