@@ -1,9 +1,14 @@
 
 
 #tetrisCanvas {
-  margin-top: 10px;
-  border: 2px solid black;
-  vertical-align: middle;
+  border: 1px solid black;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #pausedOverlay {

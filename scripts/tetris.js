@@ -24,30 +24,34 @@ var tetris = {
   cName: "tetrisCanvas",
   delay: 550,
 
+
   init: function(width, height) {
 
-    //update the page
-    document.getElementById('gameBox').innerHTML = tetrisInject;
-
-    //set the title based on the gameMode
-    document.getElementById('title').innerHTML = mainMenu.gameMode + " Tetris";
 
     //set the sideBar
-    document.getElementById('menuBar').innerHTML = tetrisSideBar;
+    var leftBar = document.getElementById('leftBar');
+    if(leftBar != null) leftBar.innerHTML = tetrisLeftBar;
+
+    //update the page
+    var rightBar = document.getElementById('rightBar');
+    if(rightBar != null) rightBar.innerHTML = tetrisRightBar;
+
+    var title = document.getElementById('title');
+    if(title != null) title.innerHTML = mainMenu.gameMode + " Tetris";
 
     this.width = width;
     this.height = height;
     this.board = [];
 
     var canvas = document.getElementById(this.cName);
-    if (canvas.getContext) {
+    if (canvas != null && canvas.getContext) {
       var ctx = canvas.getContext("2d");
       ctx.canvas.width = (this.width - 2)*tileSize + (this.width - 1)*padding;
       ctx.canvas.height = (this.height- 2)*tileSize + (this.height - 1)*padding;
     }
 
     var np = document.getElementById('nextPiece');
-    if(np.getContext) {
+    if(np != null && np.getContext) {
       var ctx = np.getContext('2d');
       ctx.canvas.width = (BLOCKSIZE * tileSize) + (BLOCKSIZE + 1)*padding;
       ctx.canvas.height = ctx.canvas.width;
@@ -189,7 +193,10 @@ var tetris = {
       else if (this.gameState == "play") this.pause();
     }
 
-    if(this.gameState != "play") { return; }
+    if(this.gameState != "play") { 
+      this.drawBoard();
+      return; 
+    }
 
     //LEFT =========================
     if(moveTo == "ArrowLeft") {
@@ -245,6 +252,8 @@ var tetris = {
 
   drawBoard: function() {
 
+
+
     //clear the board
     var canvas = document.getElementById(this.cName);
     if (canvas != null && canvas.getContext) {
@@ -297,7 +306,7 @@ var tetris = {
     //update the speed
     var speed = document.getElementById('speed');
     var hz = 1000.0 / this.delay;
-    speed.innerHTML = "Speed: " + hz.toFixed(1) + " Hz";
+    if(speed != null) speed.innerHTML = "Speed: " + hz.toFixed(1) + " Hz";
 },
 
   createBlock: function() {

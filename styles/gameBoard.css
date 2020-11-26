@@ -1,0 +1,54 @@
+
+
+#tableContainer {
+  display: table;
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 676px;
+  max-height: 676px;
+  min-height: 676px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#tableRow {
+  display: table-row;
+  table-layout: fixed;
+}
+
+#leftBar {
+  display: table-cell;
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid black;
+  border-radius: 6px 0px 0px 6px;
+
+  width: 200px;
+  height: 676px;
+
+  position: relative;
+  background-color: rgb(191, 191, 191);
+  text-align: center;
+}
+
+#rightBar {
+  display: table-cell;
+
+  width: 560px;
+  height: 676px;
+
+  border: solid 1px black;
+  border-radius: 0px 6px 6px 0px;
+}
+
+#outerGameBox {
+  background-color: grey;
+  width: 100%;
+  height: 635px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: relative;
+}

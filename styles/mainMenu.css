@@ -1,0 +1,20 @@
+
+
+
+#mainMenu {
+    border-radius: 6px;
+    background-color: rgb(191, 191, 191);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+#classicMode, #sandBoxMode {
+  width: 400px;
+  height: 70px;
+  margin: 5px;
+}

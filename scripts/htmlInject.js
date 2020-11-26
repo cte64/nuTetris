@@ -1,12 +1,7 @@
 
-var selectSizeInject =
-"<p class ='title id='title'> SandBox Tetris </p>" +
-  "<div id='game'>" +
-  "<canvas id='sizeSelectCanvas'></canvas>" +
-"</div>";
 
 var selectGameModeInject =
-"<div class='menuBar' id='selectMenu'>" +
+"<div id='mainMenu'>" +
   "<p class='title' id='title'> Select Game Mode </p>" +
   "<ul id='menuItems'>" +
     "<li class='menuItem' id='classicMode' onclick='selectGameMode.classicMode();'> Classic </li>" +
@@ -14,18 +9,29 @@ var selectGameModeInject =
   "</ul>";
 "</div>";
 
-var slideShowMiddle =
-"<canvas id='slideShow'> </canvas>" +
-"<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>";
+
+var gameBoardInject =
+"<div id='tableContainer'>" +
+  "<div id='tableRow'>" +
+  "</div>" +
+"</div>";
+
+var classicInject =
+"<div id='leftBar'>" +
+  "<ul id='menuItems'>" +
+    "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
+    "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
+    "<li class='menuItem' id='play' onclick=\"mainMenu.update('play');\"> Play </li>" +
+  "</ul>" +
+"</div>" +
+
+"<div id='rightBar'>" +
+"</div>";
 
 var tetrisPlayItems =
 "<li class='menuItem' id='pausedMenu' onclick='tetris.pause();'> Pause: </li>";
 
-var tetrisPausedItems =
-"<li class='menuItem' id='pausedMenu' onclick='tetris.unPause();'> Play: </li>" +
-"<li class='menuItem' id='goBack' onclick='tetris.goBack();'> Main Menu: </li>";
-
-var tetrisSideBar =
+var tetrisLeftBar =
 "<ul id='menuItems'>" +
   tetrisPlayItems +
 "</ul>" +
@@ -33,23 +39,37 @@ var tetrisSideBar =
 "<canvas id='nextPiece' class='tetrisTitles'> </canvas>" +
 "<p id='score' class='tetrisTitles'> Score: </p>" +
 "<p id='speed' class='tetrisTitles'> Speed: </p>";
+ 
 
-
-var classicInject =
-"<div class='menuBar' id='menuBar'>" +
-  "<ul id='menuItems'>" +
-    "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
-    "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
-    "<li class='menuItem' id='play' onclick=\"mainMenu.update('play');\"> Play </li>" +
-    "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
-  "</ul>" +
-"</div>" +
-
-"<div id='gameBox'>" +
+var tetrisRightBar =
+"<p class ='title' id='title'> Tetris </p>" +
+"<div id='outerGameBox'>" +
+  "<canvas id='tetrisCanvas'></canvas>" +
 "</div>";
 
+
+var selectSizeInject =
+"<p class ='title id='title'> Select Size </p>" +
+"<div id='outerGameBox'>" +
+  "<canvas id='sizeSelectCanvas'></canvas>" +
+"</div>";
+
+var slideShowMiddle =
+"<canvas id='slideShow'> </canvas>" +
+"<div class='gridControlButton' id='deleteButton' onclick='createPieces.deletePiece();'> Delete </div>";
+
+var tetrisPausedItems =
+"<li class='menuItem' id='pausedMenu' onclick='tetris.unPause();'> Play: </li>" +
+"<li class='menuItem' id='goBack' onclick='tetris.goBack();'> Main Menu: </li>";
+
+
+
+
+
+//THE GOOD STUFF HERE ^ =====================================================================================
+
 var sandBoxInject =
-"<div class='menuBar'>" +
+"<div id='leftBar'>" +
   "<ul id='menuItems'>" +
     "<li class='menuItem' id='goBackToGameModeSelect' onclick='mainMenu.update(this.id);'> < Back </li>" +
     "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
@@ -59,8 +79,29 @@ var sandBoxInject =
   "</ul>" +
 "</div>" +
 
-"<div id='gameBox'>" +
+"<div id='rightBar'>" +
 "</div>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var createPieceInject =
 "<p class='title' id='title'> SandBox Tetris </p>" +
@@ -96,10 +137,6 @@ var createPieceInject =
 
 var inGameOptionsInject = "";
 
-var tetrisInject =
-"<p class='title' id='title'>  </p>" +
-"<div id='game'>" +
-  "<canvas id='tetrisCanvas'></canvas>" +
-"</div>";
+
 
 var aboutInject = "";

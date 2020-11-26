@@ -57,7 +57,7 @@ var selectSize = {
 
   init: function() {
 
-    document.getElementById("gameBox").innerHTML = selectSizeInject;
+    document.getElementById("rightBar").innerHTML = selectSizeInject;
 
     for(var y = 0; y<maxYblocks; y++) {
       var row = [];
@@ -71,7 +71,7 @@ var selectSize = {
     var yPix = (maxYblocks - 2)*tileSize + (maxYblocks - 1)*padding;
 
     var canvas = document.getElementById("sizeSelectCanvas");
-    if (canvas.getContext) {
+    if (canvas != null && canvas.getContext) {
       var ctx = canvas.getContext("2d");
       ctx.canvas.width = xPix;
       ctx.canvas.height = yPix;
