@@ -1,5 +1,4 @@
 
 
 - make it play the sound for every menu button click
-- after you hit play, the left-hand bar gets shorter for some reason
 - update the "score" field so that the score is the number of blocks deleted

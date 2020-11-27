@@ -55,7 +55,7 @@ function drawSquare2(x, y, width, height, cName, c) {
     ctx.fillStyle = c;
     ctx.fillRect(x, y, width, height);
 
-    ctx.globalAlpha = 0.35;
+    ctx.globalAlpha = 0.2;
     ctx.drawImage(Images.img, x, y, tileSize, tileSize);
     ctx.globalAlpha = 1.0;
   }

@@ -52,6 +52,7 @@ function LineAnimation() {
       this.block = true;
       this.state = 0;
       this.animate();
+      tetris.score++;
     }
 
     if(this.cter > 1 && !this.block) {

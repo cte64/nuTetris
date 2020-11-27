@@ -83,6 +83,7 @@ var tetris = {
     this.createBlock();
     this.createBlock();
     this.gameState = "play";
+    this.score = 0;
 
     //set the event listeners
     setEventHandler.setKeyHandler( function(e) { tetris.moveBlock(e.key); } );
@@ -302,7 +303,11 @@ var tetris = {
     //update the speed
     var speed = document.getElementById('speed');
     var hz = 1000.0 / this.delay;
-    if(speed != null) speed.innerHTML = "Speed: " + hz.toFixed(1) + " Hz";
+    if(speed != null) speed.innerHTML = "Speed: <br>" + hz.toFixed(1) + " Hz";
+
+    //update the score 
+    var score = document.getElementById('score');
+    if(score != null && this.gameState != "animating") score.innerHTML = "Score: <br>" + this.score;
   },
 
   createBlock: function() {

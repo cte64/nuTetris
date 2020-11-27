@@ -1,8 +1,0 @@
-
-
-var about = {
-
-  init: function() {
-    
-  }
-};

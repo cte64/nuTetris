@@ -44,8 +44,11 @@ var selectSize = {
           var xPos = (x * tileSize) + (x * padding ) + padding;
           var yPos = (y * tileSize) + (y * padding ) + padding;
 
-          if(this.startMatrix[y][x]) drawSquare2(xPos, yPos, tileSize, tileSize, this.cName, "rgb(188, 209, 184)");
-          else drawSquare2(xPos, yPos, tileSize, tileSize, this.cName, "white");
+
+          
+
+          if(this.startMatrix[y][x]) drawSquare2(xPos, yPos, tileSize, tileSize, this.cName, "#232B30");
+          else drawSquare2(xPos, yPos, tileSize, tileSize, this.cName, "rgba(255, 255, 255, 0)");
         }
       }
     }
