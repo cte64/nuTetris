@@ -10,6 +10,11 @@ var createPieces = {
   pieces: [],
   scrollIndex: 0,
 
+  clearPieces: function() {
+    pieces = [];
+    console.log("clear");
+  },
+
   draw: function() {
     for(var y = 0; y < BLOCKSIZE; y++) {
       for(var x = 0; x < BLOCKSIZE; x++) {
@@ -67,7 +72,8 @@ var createPieces = {
   init: function() {
 
     //update the page
-    document.getElementById("gameBox").innerHTML = createPieceInject;
+    var rightBar = document.getElementById("rightBar");
+    if(rightBar != null) rightBar.innerHTML = createPieceInject;
 
     var canvas = document.getElementById(this.cName);
     if (canvas.getContext) {

@@ -89,10 +89,6 @@ var tetris = {
     setEventHandler.setTimerHandler(this.delay, function() {tetris.moveBlock("ArrowDown");})
   },
 
-  clearPieces: function() {
-    this.pieces.clear();
-  },
-
   copyBlockToBoard: function() {
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
       for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
@@ -145,13 +141,8 @@ var tetris = {
     this.unPause();
     setEventHandler.setTimerHandler(0, null);
 
-  
-
-    //document.getElementById('menu').innerHTML = menuSideBar;
+    createPieces.clearPieces();
     mainMenu.classic();
-
-  
-    this.clearPieces();
   },
 
   pause: function() {

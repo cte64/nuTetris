@@ -24,12 +24,23 @@ var mainMenu = {
     //Now Initialize the game ============================================
     selectSize.init();
     createPieces.classicMode();
-
-    console.log("we got here");
   },
 
   sandBox: function() {
 
+    mainMenu.gameMode = 'SandBox';
+
+    //first add the gameBoard container ==================================
+    var body = document.getElementById('body');
+    if(body != null) body.innerHTML = gameBoardInject;
+
+    //now we add the classic tetris html =================================
+    var gameBoard = document.getElementById('tableRow');
+    if(gameBoard != null) gameBoard.innerHTML = sandBoxInject;
+
+
+    createPieces.clearPieces();
+    selectSize.init();
   },
 
   update: function(button) {

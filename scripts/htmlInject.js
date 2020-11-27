@@ -1,6 +1,3 @@
-
-
-
 var selectGameModeInject =
 "<div id='mainMenu'>" +
   "<p class='title' id='title'> Select Game Mode </p>" +
@@ -9,7 +6,6 @@ var selectGameModeInject =
     "<li class='menuItem' id='sandBoxMode' onclick='mainMenu.sandBox();'> SandBox </li>" +
   "</ul>";
 "</div>";
-
 
 var gameBoardInject =
 "<div id='tableContainer'>" +
@@ -57,10 +53,6 @@ var tetrisPausedItems =
 "<li class='menuItem' id='pausedMenu' onclick='tetris.unPause();'> Play: </li>" +
 "<li class='menuItem' id='goBack' onclick='tetris.goBack();'> Main Menu: </li>";
 
-
-
-//THE GOOD STUFF HERE ^ =====================================================================================
-
 var sandBoxInject =
 "<div id='leftBar'>" +
   "<ul id='menuItems'>" +
@@ -68,22 +60,13 @@ var sandBoxInject =
     "<li class='menuItem' id='sizeSelect' onclick='mainMenu.update(this.id);'> Select Size <br> (25 x 25) </li>" +
     "<li class='menuItem' id='inGameOptions' onclick='mainMenu.update(this.id);'> In-Game <br> Options </li>" +
     "<li class='menuItem' id='createPieces' onclick='mainMenu.update(this.id);'> Create Custom <br> Pieces </li>" +
-    "<li class='lastItem' id='about' onclick='mainMenu.update(this.id);'> About </li>" +
   "</ul>" +
 "</div>" +
 
 "<div id='rightBar'>" +
 "</div>";
 
-
-
-
-
-
-
-
-
-
+//THE GOOD STUFF HERE ^ =====================================================================================
 
 
 
