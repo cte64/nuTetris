@@ -1,8 +1,4 @@
 
-
-
-
-
 #tableContainer {
   display: table;
   margin: auto;
@@ -42,36 +38,14 @@
   margin: 0px;
   border: solid 1px black;
   border-radius: 0px 6px 6px 0px;
-}
-
-#rightFlexBox {
-  display: flexbox;
-  flex-direction: column;
-  height: 100%;
-}
-
-#outerGameBox {
   background-color: grey;
-  text-align: center;
+  height: 100%;
   position: relative;
-  margin: 0px;
-  border: 0px;
-  height: 93%;
-  padding: 0px;
-  border-radius: 0px 0px 6px 0px;
-}
-
-#titleBox {
-  height: 7%;
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-  overflow: hidden;
 }
 
 .title {
   font-family: "custom";
-  font-size: 20px;
+  font-size: 1.5em;
   margin: 0px;
   padding: 0px;
   text-align: center;

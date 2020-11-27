@@ -40,23 +40,13 @@ var tetrisLeftBar =
 "<p id='score' class='tetrisTitles'> Score: </p>" +
 "<p id='speed' class='tetrisTitles'> Speed: </p>";
  
+var tetrisRightBar = 
+"<p class='title' id='title'> stuff </p>" + 
+"<canvas id='tetrisCanvas'></canvas>" ;
 
-var tetrisRightBar =
-"<p class ='title' id='title'> Tetris </p>" +
-"<div id='outerGameBox'>" +
-  "<canvas id='tetrisCanvas'></canvas>" +
-"</div>";
-
-
-var selectSizeInject =
-
-"<div id='titleBox'>" + 
-  "<p class ='title id='title'> Select Size </p>" +
-"</div>" + 
-
-"<div id='outerGameBox'>" +
-  "<canvas id='sizeSelectCanvas'></canvas>" +
-"</div>";
+var selectSizeInject = 
+"<p class='title' id='title'> Select Size </p>" + 
+"<canvas id='sizeSelectCanvas'></canvas>";
 
 var slideShowMiddle =
 "<canvas id='slideShow'> </canvas>" +
@@ -65,8 +55,6 @@ var slideShowMiddle =
 var tetrisPausedItems =
 "<li class='menuItem' id='pausedMenu' onclick='tetris.unPause();'> Play: </li>" +
 "<li class='menuItem' id='goBack' onclick='tetris.goBack();'> Main Menu: </li>";
-
-
 
 
 
