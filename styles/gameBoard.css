@@ -1,14 +1,17 @@
 
 
+
+
+
 #tableContainer {
   display: table;
   margin: auto;
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 676px;
-  max-height: 676px;
-  min-height: 676px;
+  height: 565px;
+  width: 650px;
+  padding: 0px;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -16,6 +19,7 @@
 #tableRow {
   display: table-row;
   table-layout: fixed;
+  padding: 0px;
 }
 
 #leftBar {
@@ -24,10 +28,7 @@
   margin: 0px;
   border: 1px solid black;
   border-radius: 6px 0px 0px 6px;
-
-  width: 200px;
-  height: 676px;
-
+  width: 25%;
   position: relative;
   background-color: rgb(191, 191, 191);
   text-align: center;
@@ -35,20 +36,44 @@
 
 #rightBar {
   display: table-cell;
-
-  width: 560px;
-  height: 676px;
-
+  width: 75%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
   border: solid 1px black;
   border-radius: 0px 6px 6px 0px;
 }
 
+#rightFlexBox {
+  display: flexbox;
+  flex-direction: column;
+  height: 100%;
+}
+
 #outerGameBox {
   background-color: grey;
-  width: 100%;
-  height: 635px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
   position: relative;
+  margin: 0px;
+  border: 0px;
+  height: 93%;
+  padding: 0px;
+  border-radius: 0px 0px 6px 0px;
+}
+
+#titleBox {
+  height: 7%;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  overflow: hidden;
+}
+
+.title {
+  font-family: "custom";
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  overflow: hidden;
 }

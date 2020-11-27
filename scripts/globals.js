@@ -3,8 +3,8 @@ const tileSize = 18;
 const padding = 0;
 const sideBarWidth = 100;
 const BLOCKSIZE = 5;
-const maxXblocks = 32;
-const maxYblocks = 36;
+const maxXblocks = 28;
+const maxYblocks = 30;
 const gameBoxPadding = 10;
 var currentObj;
 

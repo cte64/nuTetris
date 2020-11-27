@@ -49,7 +49,11 @@ var tetrisRightBar =
 
 
 var selectSizeInject =
-"<p class ='title id='title'> Select Size </p>" +
+
+"<div id='titleBox'>" + 
+  "<p class ='title id='title'> Select Size </p>" +
+"</div>" + 
+
 "<div id='outerGameBox'>" +
   "<canvas id='sizeSelectCanvas'></canvas>" +
 "</div>";
