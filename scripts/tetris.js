@@ -139,14 +139,19 @@ var tetris = {
         }
       }
     }
-},
+  },
 
   goBack: function() {
     this.unPause();
     setEventHandler.setTimerHandler(0, null);
-    document.getElementById('menu').innerHTML = menuSideBar;
-    mainMenu.update("sizeSelect");
-    createPieces.pieces = [];
+
+  
+
+    //document.getElementById('menu').innerHTML = menuSideBar;
+    mainMenu.classic();
+
+  
+    this.clearPieces();
   },
 
   pause: function() {
@@ -307,7 +312,7 @@ var tetris = {
     var speed = document.getElementById('speed');
     var hz = 1000.0 / this.delay;
     if(speed != null) speed.innerHTML = "Speed: " + hz.toFixed(1) + " Hz";
-},
+  },
 
   createBlock: function() {
 

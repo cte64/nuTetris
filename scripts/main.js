@@ -9,11 +9,35 @@ var mainMenu = {
     selectGameMode.init();
   },
 
+  classic: function() {
+
+    mainMenu.gameMode = 'Classic';
+
+    //first add the gameBoard container ==================================
+    var body = document.getElementById('body');
+    if(body != null) body.innerHTML = gameBoardInject;
+
+    //now we add the classic tetris html =================================
+    var gameBoard = document.getElementById('tableRow');
+    if(gameBoard != null) gameBoard.innerHTML = classicInject;
+
+    //Now Initialize the game ============================================
+    selectSize.init();
+    createPieces.classicMode();
+
+    console.log("we got here");
+  },
+
+  sandBox: function() {
+
+  },
+
   update: function(button) {
 
 
     //play the Sound
     Sound.play("menuFX");
+
 
     state = button;
     if(state == "goBackToGameModeSelect") selectGameMode.init();

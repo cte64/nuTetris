@@ -1,11 +1,12 @@
 
 
+
 var selectGameModeInject =
 "<div id='mainMenu'>" +
   "<p class='title' id='title'> Select Game Mode </p>" +
   "<ul id='menuItems'>" +
-    "<li class='menuItem' id='classicMode' onclick='selectGameMode.classicMode();'> Classic </li>" +
-    "<li class='menuItem' id='sandBoxMode' onclick='selectGameMode.sandBoxMode();'> SandBox </li>" +
+    "<li class='menuItem' id='classicMode' onclick='mainMenu.classic();'> Classic </li>" +
+    "<li class='menuItem' id='sandBoxMode' onclick='mainMenu.sandBox();'> SandBox </li>" +
   "</ul>";
 "</div>";
 
