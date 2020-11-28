@@ -55,7 +55,7 @@ function LineAnimation() {
       tetris.score++;
 
       //increase the level by 1 every time the score 
-      if(tetris.score % 5 == 0) {
+      if(tetris.score % 10 == 0) {
         tetris.level++;
         tetris.setLevel();
       }
