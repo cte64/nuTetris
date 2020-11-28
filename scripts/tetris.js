@@ -19,10 +19,11 @@ var tetris = {
   timeBtw: 0.5,
   gameState: "",
   score: 0,
+  level: 1,
+  currentSpeed: 1,
   width: 10,
   height: 10,
   cName: "tetrisCanvas",
-  delay: 550,
 
 
   init: function(width, height) {
@@ -84,10 +85,20 @@ var tetris = {
     this.createBlock();
     this.gameState = "play";
     this.score = 0;
+    this.level = 1;
 
     //set the event listeners
     setEventHandler.setKeyHandler( function(e) { tetris.moveBlock(e.key); } );
-    setEventHandler.setTimerHandler(this.delay, function() {tetris.moveBlock("ArrowDown");})
+    this.setLevel();
+  },
+
+  setLevel: function() {
+
+    this.currentSpeed = 1.0;
+    if(this.level < classicLevels.length) this.currentSpeed = classicLevels[this.level - 1];
+
+    var newDelay = 1000 / this.currentSpeed;
+    setEventHandler.setTimerHandler(newDelay, function() {tetris.moveBlock("ArrowDown");})
   },
 
   copyBlockToBoard: function() {
@@ -300,14 +311,18 @@ var tetris = {
       }
     }
 
-    //update the speed
-    var speed = document.getElementById('speed');
-    var hz = 1000.0 / this.delay;
-    if(speed != null) speed.innerHTML = "Speed: <br>" + hz.toFixed(1) + " Hz";
-
+    
     //update the score 
     var score = document.getElementById('score');
-    if(score != null && this.gameState != "animating") score.innerHTML = "Score: <br>" + this.score;
+    if(score != null && this.gameState != "animating") score.innerHTML = " " + this.score;
+
+    //update the level
+    var currentLevel = document.getElementById('level');
+    if(currentLevel != null  && this.gameState != "animating") currentLevel.innerHTML = " " + this.level;
+    
+    //update the speed
+    var speed = document.getElementById('speed');
+    if(speed != null  && this.gameState != "animating") speed.innerHTML = " " + this.currentSpeed.toFixed(1) + " Hz";
   },
 
   createBlock: function() {

@@ -53,6 +53,12 @@ function LineAnimation() {
       this.state = 0;
       this.animate();
       tetris.score++;
+
+      //increase the level by 1 every time the score 
+      if(tetris.score % 5 == 0) {
+        tetris.level++;
+        tetris.setLevel();
+      }
     }
 
     if(this.cter > 1 && !this.block) {

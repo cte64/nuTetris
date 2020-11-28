@@ -34,8 +34,16 @@ var tetrisLeftBar =
 "</ul>" +
 "<p id='nextPieceLabel' class='tetrisTitles'> Next Piece: </p>" +
 "<canvas id='nextPiece' class='tetrisTitles'> </canvas>" +
-"<p id='score' class='tetrisTitles'> Score: </p>" +
-"<p id='speed' class='tetrisTitles'> Speed: </p>";
+
+"<p id='scoreLabel' class='tetrisTitles'> Score: </p>" +
+"<p id='score' class='tetrisSide'> 0 </p> </br>" +
+
+"<p id='levelLabel' class='tetrisTitles'> Level: </p>" + 
+"<p id='level' class='tetrisSide'> 1 </p> </br>" +
+
+"<p id='speedLabel' class='tetrisTitles'> Speed: </p>" + 
+"<p id='speed' class='tetrisSide'> 1.0 </p>";
+
  
 var tetrisRightBar = 
 "<p class='title' id='title'> stuff </p>" + 
@@ -65,19 +73,6 @@ var sandBoxInject =
 
 "<div id='rightBar'>" +
 "</div>";
-
-//THE GOOD STUFF HERE ^ =====================================================================================
-
-
-
-
-
-
-
-
-
-
-
 
 var createPieceInject =
 "<p class='title' id='title'> SandBox Tetris </p>" +
@@ -110,9 +105,3 @@ var createPieceInject =
     "</div>" +
   "</div>" +
 "</div>";
-
-var inGameOptionsInject = "";
-
-
-
-var aboutInject = "";

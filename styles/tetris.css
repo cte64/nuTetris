@@ -1,7 +1,7 @@
 
 
 #tetrisCanvas {
-  border: 3px solid rgba(240, 240, 240, 1);
+  border: 3px solid rgb(146, 146, 146);
   border-radius: 3px;
 
   position: absolute;
@@ -30,4 +30,15 @@
 .tetrisTitles {
   font-family: "custom";
   font-size: 18px;
+  font-weight: 900;
+  margin: 10px;
+
+}
+
+.tetrisSide {
+  font-family: "custom";
+  font-size: 14px;
+  margin: 10px;
+  color: rgb(97, 95, 48);
+
 }
