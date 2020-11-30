@@ -42,7 +42,7 @@ var tetrisLeftBar =
 "<p id='level' class='tetrisSide'> 1 </p> </br>" +
 
 "<p id='speedLabel' class='tetrisTitles'> Speed: </p>" + 
-"<p id='speed' class='tetrisSide'> 1.0 </p>";
+"<p id='speed' class='tetrisSide'> 1.9 </p>";
 
  
 var tetrisRightBar = 
@@ -105,3 +105,27 @@ var createPieceInject =
     "</div>" +
   "</div>" +
 "</div>";
+
+var endGameInjectLeft = 
+"<ul id='menuItems'>" +
+  "<li class='menuItem' id='endGameBack' onclick='mainMenu.classic();'> Go Back </li>" +
+"</ul>";
+
+var endGameInjectRight = 
+
+
+
+"<canvas id='tetrisCanvas'></canvas>" + 
+
+"<div id='pausedOverlay'>" + 
+
+  "<p class='title' id='title'> GAME OVER </p> </br>" + 
+
+  "<p class='endGameTitle'> Score: </p>" +
+  "<p id='endGameScore' class='endGameValue'> 0 </p> </br>" +
+
+  "<p class='endGameTitle'> Level: </p>" +
+  "<p id='endGameLevel' class='endGameValue'> 0 </p>" +
+
+"</div>";
+

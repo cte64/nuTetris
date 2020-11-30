@@ -78,7 +78,8 @@
   font-size: 15px;
   display: block;
   border: solid 1px black;
-  background-color: rgb(169, 214, 196);
+  background: #232B30; /* old browsers */
+  color: #9fa8b0;
   style: none;
   text-decoration: none;
   border-radius: 6px;

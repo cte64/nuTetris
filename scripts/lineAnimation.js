@@ -54,8 +54,9 @@ function LineAnimation() {
       tetris.score++;
 
       //increase the level by 1 every time the score 
-      if(tetris.score % 10 == 0) {
+      if(tetris.score % 1 == 0) {
         tetris.level++;
+        tetris.level = clamp(tetris.level, 0, classicLevels.length - 1);
         tetris.setLevel();
       }
     }

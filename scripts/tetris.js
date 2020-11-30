@@ -103,7 +103,7 @@ var tetris = {
 
   checkEndGame: function() {
     for(var x = 1; x < this.width - 1; x++) {
-      if(this.board[0][x] != 0) {
+      if(this.board[0][x] != 0 && this.gameState != "endGame") {
         this.endGame();
       }
     }
@@ -175,10 +175,35 @@ var tetris = {
   },
 
   endGame: function() {
+
+
     this.gameState = "endGame";
-    var newH = "<div id='pausedOverlay'> </div>";
-    document.getElementById("tableContainer").innerHTML += newH;
-    document.getElementById('menuItems').innerHTML = tetrisPausedItems;
+
+
+    //set the sideBar
+    var leftBar = document.getElementById('leftBar');
+    if(leftBar != null) leftBar.innerHTML = endGameInjectLeft;
+
+    //update the page
+    var rightBar = document.getElementById('rightBar');
+    if(rightBar != null) rightBar.innerHTML = endGameInjectRight;
+
+    //update the score
+    var scoreHTML = document.getElementById('endGameScore');
+    if(scoreHTML != null) scoreHTML.innerHTML = " " + this.score;
+
+    //update the level
+    var scoreHTML = document.getElementById('endGameLevel');
+    if(scoreHTML != null) scoreHTML.innerHTML = " " + this.level;
+
+
+    //I still don't know why I have to do this
+    var canvas = document.getElementById(this.cName);
+    if (canvas != null && canvas.getContext) {
+      var ctx = canvas.getContext("2d");
+      ctx.canvas.width = (this.width - 2)*tileSize + (this.width - 1)*padding;
+      ctx.canvas.height = (this.height- 2)*tileSize + (this.height - 1)*padding;
+    }
   },
 
   unPause: function() {
