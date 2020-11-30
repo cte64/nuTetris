@@ -62,7 +62,7 @@ var tetris = {
     for(var y = 0; y<this.height; y++) {
       var row = [];
       for(var x = 0; x<this.width; x++) {
-        if(x == 0 || x == this.width - 1  || y == 0 || y == this.height - 1) row.push('T');
+        if(x == 0 || x == this.width - 1 || y == this.height - 1) row.push('T');
         else row.push(0);
       }
       this.board.push(row);
@@ -101,11 +101,21 @@ var tetris = {
     setEventHandler.setTimerHandler(newDelay, function() {tetris.moveBlock("ArrowDown");})
   },
 
+  checkEndGame: function() {
+    for(var x = 1; x < this.width - 1; x++) {
+      if(this.board[0][x] != 0) {
+        this.endGame();
+      }
+    }
+  },
+
   copyBlockToBoard: function() {
     for(var y = this.block.yPos; y < this.block.yPos + BLOCKSIZE; y++) {
       for(var x = this.block.xPos; x < this.block.xPos + BLOCKSIZE; x++) {
-        if(this.block.matrix[y - this.block.yPos][x - this.block.xPos] != 0)
+        if(this.block.matrix[y - this.block.yPos][x - this.block.xPos] != 0) {
           this.board[y][x] = this.block.matrix[y - this.block.yPos][x - this.block.xPos];
+          this.checkEndGame();
+        }
       }
     }
   },
@@ -159,6 +169,13 @@ var tetris = {
 
   pause: function() {
     this.gameState = "paused";
+    var newH = "<div id='pausedOverlay'> </div>";
+    document.getElementById("tableContainer").innerHTML += newH;
+    document.getElementById('menuItems').innerHTML = tetrisPausedItems;
+  },
+
+  endGame: function() {
+    this.gameState = "endGame";
     var newH = "<div id='pausedOverlay'> </div>";
     document.getElementById("tableContainer").innerHTML += newH;
     document.getElementById('menuItems').innerHTML = tetrisPausedItems;
@@ -254,6 +271,7 @@ var tetris = {
       Sound.play("hitTheFloor");
     }
 
+    this.checkEndGame();
     this.updateGuide();
     this.drawBoard();
   },
@@ -341,6 +359,6 @@ var tetris = {
     this.block.newColor = createPieces.pieces[index].color;
 
     this.block.xPos = Math.floor(this.width/2 - BLOCKSIZE/2 - 1);
-    this.block.yPos = 0;
+    this.block.yPos = -1;
   }
 };

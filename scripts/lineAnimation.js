@@ -46,7 +46,6 @@ function LineAnimation() {
         flag = false;
     }
 
-
     if(flag) {
       tetris.gameState = "animating";
       this.block = true;
