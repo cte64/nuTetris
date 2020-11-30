@@ -1,5 +1,6 @@
 var classicLevels = 
 [
+    2.8,
     2.9,
     3.0,
     3.1,
@@ -24,5 +25,4 @@ var classicLevels =
     5.4,
     5.5,
     5.6,
-    5.7
 ];
