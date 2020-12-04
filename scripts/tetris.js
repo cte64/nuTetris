@@ -169,8 +169,7 @@ var tetris = {
 
   pause: function() {
     this.gameState = "paused";
-    var newH = "<div id='pausedOverlay'> </div>";
-    document.getElementById("tableContainer").innerHTML += newH;
+    document.getElementById("rightBar").innerHTML += pausedOverlay;
     document.getElementById('menuItems').innerHTML = tetrisPausedItems;
   },
 
@@ -209,7 +208,7 @@ var tetris = {
   unPause: function() {
     this.gameState = "play";
     var overlay = document.getElementById('pausedOverlay');
-    if(overlay != null) document.getElementById("tableContainer").removeChild(overlay);
+    if(overlay != null) document.getElementById("rightBar").removeChild(overlay);
     document.getElementById('menuItems').innerHTML = tetrisPlayItems;
     var goBack = document.getElementById('goBack');
     if(goBack != null) document.getElementById('menuItems').removeChild(goBack);
