@@ -14,13 +14,14 @@
 }
 
 #pausedOverlay {
-  background-color: rgba(222, 222, 222, 0.6);
+  background-color: rgba(222, 222, 222, 0.8);
   width: 100%;
   height: 100%;
   left: 0px;
   top: 0px;
   position: absolute;
   z-index: 4;
+  text-align: center;
 }
 
 #goBack, #pausedMenu {

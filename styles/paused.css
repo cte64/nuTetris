@@ -6,19 +6,6 @@
     height: 50%;
 }
 
-
-
-/*
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
 .switch {
   position: relative;
   display: inline-block;
@@ -67,17 +54,27 @@ input:checked + .slider:before {
 }
 
 
+
+/*
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+
 </style>
 </head>
 <body>
 
 <h2>Toggle Switch</h2>
 
-
-<label class="switch">
-  <input type="checkbox" checked>
-  <span class="slider"></span>
-</label><br><br>
 
 </body>
 </html> 

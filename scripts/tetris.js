@@ -24,7 +24,14 @@ var tetris = {
   width: 10,
   height: 10,
   cName: "tetrisCanvas",
+  guideToggle: true,
 
+
+  toggleGuide: function(value) {
+
+    this.guideToggle = value;
+    console.log(this.guideToggle);
+  },
 
   init: function(width, height) {
 
@@ -171,6 +178,14 @@ var tetris = {
     this.gameState = "paused";
     document.getElementById("rightBar").innerHTML += pausedOverlay;
     document.getElementById('menuItems').innerHTML = tetrisPausedItems;
+
+
+    //set the state of the the guide thing
+    var guide = document.getElementById('guideToggle');
+    if(guide != null) {
+      guide.value = this.guideToggle;
+      console.log("thisis th tnf");
+    } 
   },
 
   endGame: function() {
@@ -302,8 +317,6 @@ var tetris = {
 
   drawBoard: function() {
 
-
-
     //clear the board
     var canvas = document.getElementById(this.cName);
     if (canvas != null && canvas.getContext) {
@@ -344,16 +357,17 @@ var tetris = {
     }
 
     //draw the guide piece
-    for(var y = 0; y < BLOCKSIZE; y++) {
-      for(var x = 0; x  < BLOCKSIZE; x++) {
-        var c = this.block.matrix[y][x];
-        var xC = (x + this.block.xPos - 1)*(tileSize + padding);
-        var yC = (y + this.block.guideY)*(tileSize + padding);
-        if(c != ' ') drawSquare3(xC, yC, tileSize, tileSize, this.cName, 'rgba(255, 255, 255, 50)');
+    if(this.guideToggle) {
+      for(var y = 0; y < BLOCKSIZE; y++) {
+        for(var x = 0; x  < BLOCKSIZE; x++) {
+          var c = this.block.matrix[y][x];
+          var xC = (x + this.block.xPos - 1)*(tileSize + padding);
+          var yC = (y + this.block.guideY)*(tileSize + padding);
+          if(c != ' ') drawSquare3(xC, yC, tileSize, tileSize, this.cName, 'rgba(255, 255, 255, 50)');
+        }
       }
     }
 
-    
     //update the score 
     var score = document.getElementById('score');
     if(score != null && this.gameState != "animating") score.innerHTML = " " + this.score;

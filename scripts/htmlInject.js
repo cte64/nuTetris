@@ -51,11 +51,19 @@ var endGameInjectLeft =
 
 var pausedOverlay = 
 "<div id='pausedOverlay'>" + 
-  "<div id='optionsBox'>" + 
 
-    "<button> test </button>" + 
 
-  "</div>" + 
+
+    "</br></br></br></br></br></br></br>" + 
+
+    "<p class='title'> Guide </p>" + 
+
+    "<label class='switch'>" +
+      "<input type='checkbox' onclick='tetris.toggleGuide(this.checked)' id='guideToggle' checked>" + 
+      "<span class='slider'></span>" + 
+    "</label><br><br>" + 
+
+
 "</div>";
 
 
