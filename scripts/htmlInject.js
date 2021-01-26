@@ -58,9 +58,9 @@ var pausedOverlay =
 
     "<p class='title'> Guide </p>" + 
 
-    "<label class='switch'>" +
-      "<input type='checkbox' onclick='tetris.toggleGuide(this.checked)' id='guideToggle' checked>" + 
-      "<span class='slider'></span>" + 
+    "<label class='switch' id='switch'>" +
+      "<input type='checkbox' onclick='tetris.toggleGuide(this.checked)' id='guideToggle'>" + 
+      "<span class='slider' id='slider'></span>" + 
     "</label><br><br>" + 
 
 

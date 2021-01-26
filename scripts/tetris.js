@@ -30,7 +30,7 @@ var tetris = {
   toggleGuide: function(value) {
 
     this.guideToggle = value;
-    console.log(this.guideToggle);
+    //console.log(this.guideToggle);
   },
 
   init: function(width, height) {
@@ -97,6 +97,9 @@ var tetris = {
     //set the event listeners
     setEventHandler.setKeyHandler( function(e) { tetris.moveBlock(e.key); } );
     this.setLevel();
+
+    //initialize the guide to true
+    this.guideToggle = true;
   },
 
   setLevel: function() {
@@ -183,9 +186,20 @@ var tetris = {
     //set the state of the the guide thing
     var guide = document.getElementById('guideToggle');
     if(guide != null) {
-      guide.value = this.guideToggle;
-      console.log("thisis th tnf");
+      guide.checked = this.guideToggle;
+      //console.log(this.guideToggle);
     } 
+  },
+
+  unPause: function() {
+
+    this.gameState = "play";
+    var overlay = document.getElementById('pausedOverlay');
+    if(overlay != null) document.getElementById("rightBar").removeChild(overlay);
+
+    document.getElementById('menuItems').innerHTML = tetrisPlayItems;
+    var goBack = document.getElementById('goBack');
+    if(goBack != null) document.getElementById('menuItems').removeChild(goBack);
   },
 
   endGame: function() {
@@ -218,15 +232,6 @@ var tetris = {
       ctx.canvas.width = (this.width - 2)*tileSize + (this.width - 1)*padding;
       ctx.canvas.height = (this.height- 2)*tileSize + (this.height - 1)*padding;
     }
-  },
-
-  unPause: function() {
-    this.gameState = "play";
-    var overlay = document.getElementById('pausedOverlay');
-    if(overlay != null) document.getElementById("rightBar").removeChild(overlay);
-    document.getElementById('menuItems').innerHTML = tetrisPlayItems;
-    var goBack = document.getElementById('goBack');
-    if(goBack != null) document.getElementById('menuItems').removeChild(goBack);
   },
 
   updateGuide: function() {
